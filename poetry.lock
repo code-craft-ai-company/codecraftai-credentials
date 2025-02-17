@@ -35,7 +35,7 @@ pyyaml = "^6.0.2"
 type = "git"
 url = "git@github.com:automationmojo/automojo-foundation.git"
 reference = "main"
-resolved_reference = "b979bc557c5e6e78fda49e9b61a3f59c06e97a89"
+resolved_reference = "0245f3676a84828733f4a47e7c6cbb35c67c8f46"
 
 [[package]]
 name = "automojo-waiting"
