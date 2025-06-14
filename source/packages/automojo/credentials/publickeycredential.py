@@ -34,6 +34,8 @@ class PublicKeyCredential(BaseCredential):
 
     def __init__(self, *, identifier: str, categories: List[str], public: str, private: str, role: Optional[str] = "priv"):
         """
+            Initializes a :class:`PublicKeyCredential` instance.
+
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param public: The public key value.

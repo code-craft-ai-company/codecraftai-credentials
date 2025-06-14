@@ -35,6 +35,8 @@ class BasicCredential(BaseCredential):
     def __init__(self, *, identifier: str, categories: List[str], username: str, password: str,
                  role: Optional[str] = "priv"):
         """
+            Initializes a :class:`BasicCredential` instance.
+
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param username: The username associated with this credential.

@@ -35,6 +35,8 @@ class AwsAccessKeyCredential(BaseCredential):
 
     def __init__(self, *, identifier: str, categories: List[str], keyid: str, secret: str, role: Optional[str] = "priv"):
         """
+            Initializes an :class:`AwsAccessKeyCredential` instance.
+
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param keyid: The AWS key identifier.

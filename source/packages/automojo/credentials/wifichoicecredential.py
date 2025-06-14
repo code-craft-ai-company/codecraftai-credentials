@@ -35,6 +35,8 @@ class WifiChoiceCredential(BaseCredential):
 
     def __init__(self, *, identifier: str, categories: List[str], networks: List[Dict[str, str]], role: Optional[str] = "priv"):
         """
+            Initializes a :class:`WifiChoiceCredential` instance.
+
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param networks: List of network credentials.

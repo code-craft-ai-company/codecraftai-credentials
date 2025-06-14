@@ -33,6 +33,8 @@ class ApiTokenCredential(BaseCredential):
 
     def __init__(self, *, identifier: str, categories: List[str], token: str, role: Optional[str] = "priv"):
         """
+            Initializes an :class:`ApiTokenCredential` instance.
+
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param token: A token that services as an identity and authenticate to allow the use of specific APIs.

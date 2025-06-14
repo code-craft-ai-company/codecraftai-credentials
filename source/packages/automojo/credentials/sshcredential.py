@@ -36,9 +36,11 @@ class SshCredential(BaseCredential):
     """
 
     def __init__(self, *, identifier: str, categories: List[str], username: str, role: Optional[str] = "priv",
-                 password: Optional[str] = None, keyfile: Optional[str] = None, keyraw: Optional[str]= None, 
+                 password: Optional[str] = None, keyfile: Optional[str] = None, keyraw: Optional[str]= None,
                  keypasswd: Optional[str] = None, allow_agent: bool = False, primitive: bool=False):
         """
+            Initializes an :class:`SshCredential` instance.
+
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param role: An optional parameter that identifies the role that the credential is assigned to.
@@ -193,7 +195,7 @@ class SshCredential(BaseCredential):
 
         rtnval["username"] = self._username
         rtnval["allow_agent"] = self._allow_agent
-        rtnval["pimitive"] = self._primitive
+        rtnval["primitive"] = self._primitive
 
         if self._password is not None:
             rtnval["password"] =  self._password
