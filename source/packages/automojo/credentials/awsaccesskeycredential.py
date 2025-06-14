@@ -22,7 +22,8 @@ from automojo.credentials.basecredential import BaseCredential
 
 class AwsAccessKeyCredential(BaseCredential):
     """
-        The :class:`AwsAccessKey` is a container object for an api token credential.
+        The :class:`AwsAccessKeyCredential` is a container object for an AWS
+        access key credential.
 
         .. code:: yaml
             "identifier": "aws-cred"
