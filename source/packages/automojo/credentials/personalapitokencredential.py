@@ -36,6 +36,7 @@ class PersonalApiTokenCredential(BaseCredential):
         """
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
+            :param username: The username associated with the personal token.
             :param token: A token that services as an identity and authenticate to allow the use of specific APIs.
         """
         super().__init__(identifier=identifier, categories=categories, role=role)
@@ -51,14 +52,31 @@ class PersonalApiTokenCredential(BaseCredential):
 
     @property
     def username(self):
+        """
+            Returns the username associated with this credential.
+
+            :returns: The username string.
+        """
         return self._username
 
     @property
     def token(self):
+        """
+            Returns the personal API token.
+
+            :returns: The token string.
+        """
         return self._token
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates the dictionary describing a personal API token credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 

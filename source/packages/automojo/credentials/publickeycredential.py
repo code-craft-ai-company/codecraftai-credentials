@@ -36,7 +36,8 @@ class PublicKeyCredential(BaseCredential):
         """
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
-            :param token: A token that services as an identity and authenticate to allow the use of specific APIs.
+            :param public: The public key value.
+            :param private: The private key value.
         """
         super().__init__(identifier=identifier, categories=categories, role=role)
 
@@ -53,15 +54,32 @@ class PublicKeyCredential(BaseCredential):
 
     @property
     def public(self):
+        """
+            Returns the public key value.
+
+            :returns: The public key string.
+        """
         return self._public
     
     @property
     def private(self):
+        """
+            Returns the private key value.
+
+            :returns: The private key string.
+        """
         return self._private
     
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates the dictionary describing a public/private key credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 

@@ -49,10 +49,22 @@ class ApiTokenCredential(BaseCredential):
 
     @property
     def token(self):
+        """
+            Returns the API token string.
+
+            :returns: The API token value.
+        """
         return self._token
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates the dictionary describing an API token credential.
+
+            :param cred_info: The credential information dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 
