@@ -31,6 +31,10 @@ from automojo.credentials.wifichoicecredential import WifiChoiceCredential
 logger = logging.getLogger()
 
 class CredentialManager:
+    """
+        The :class:`CredentialManager` provides for loading credential
+        definitions and returning credential objects on demand.
+    """
 
     def __init__(self):
         """
