@@ -76,34 +76,76 @@ class SshCredential(BaseCredential):
 
     @property
     def allow_agent(self) -> bool:
+        """
+            Indicates if the SSH agent is allowed for authentication.
+
+            :returns: True if the SSH agent can be used.
+        """
         return self._allow_agent
 
     @property
     def keyfile(self) -> Union[str, None]:
+        """
+            Gets the path to the private key file used for authentication.
+
+            :returns: Path to the key file or ``None`` if not specified.
+        """
         return self._keyfile
     
     @property
     def keyraw(self) -> Union[str, None]:
-        return self._keyfile
+        """
+            Gets the raw private key data used for authentication.
+
+            :returns: Raw key data or ``None`` if not specified.
+        """
+        return self._keyraw
 
     @property
     def keypasswd(self) -> Union[str, None]:
+        """
+            Returns the password used to decrypt the private key file if required.
+
+            :returns: Key password or ``None`` if not specified.
+        """
         return self._keypasswd
 
     @property
     def password(self) -> Union[str, None]:
+        """
+            Returns the password used for authentication.
+
+            :returns: Password string or ``None`` if not provided.
+        """
         return self._password
 
     @property
     def primitive(self) -> bool:
+        """
+            Indicates if primitive SSH operations should be used for file transfers.
+
+            :returns: ``True`` if primitive mode is enabled.
+        """
         return self._primitive
 
     @property
     def username(self) -> str:
+        """
+            Returns the username associated with this credential.
+
+            :returns: The username string.
+        """
         return self._username
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates a dictionary describing an SSH credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 

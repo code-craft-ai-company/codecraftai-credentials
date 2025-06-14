@@ -44,14 +44,29 @@ class BaseCredential:
 
     @property
     def categories(self):
+        """
+            Gets the authentication categories associated with this credential.
+
+            :returns: A list of category names.
+        """
         return self._categories
 
     @property
     def identifier(self):
+        """
+            Gets the identifier of this credential.
+
+            :returns: The identifier string for the credential.
+        """
         return self._identifier
 
     @property
     def role(self):
+        """
+            Gets the role assigned to this credential.
+
+            :returns: The role name associated with this credential.
+        """
         return self._role
     
     def as_dict(self) -> Dict[str, Any]:

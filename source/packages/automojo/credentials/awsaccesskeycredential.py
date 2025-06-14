@@ -36,7 +36,8 @@ class AwsAccessKeyCredential(BaseCredential):
         """
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
-            :param token: A token that services as an identity and authenticate to allow the use of specific APIs.
+            :param keyid: The AWS key identifier.
+            :param secret: The AWS secret key.
         """
         super().__init__(identifier=identifier, categories=categories, role=role)
 
@@ -53,15 +54,32 @@ class AwsAccessKeyCredential(BaseCredential):
 
     @property
     def keyid(self):
+        """
+            Returns the AWS key identifier associated with this credential.
+
+            :returns: The key identifier string.
+        """
         return self._keyid
     
     @property
     def secret(self):
+        """
+            Returns the AWS secret key.
+
+            :returns: The secret key string.
+        """
         return self._secret
     
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates the dictionary describing an AWS access key credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 

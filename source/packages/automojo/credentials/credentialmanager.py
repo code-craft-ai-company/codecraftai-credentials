@@ -33,6 +33,12 @@ logger = logging.getLogger()
 class CredentialManager:
 
     def __init__(self):
+        """
+            Initializes an instance of the :class:`CredentialManager` class.
+
+            The manager maintains a collection of credential objects loaded from
+            configuration sources.
+        """
 
         self._credentials = {}
         self._source_uris = []
@@ -41,6 +47,11 @@ class CredentialManager:
 
     @property
     def credentials(self):
+        """
+            Returns the dictionary of credentials loaded by the manager.
+
+            :returns: Dictionary mapping credential identifiers to credential objects.
+        """
         return self._credentials
 
     def lookup_credential(self, credkey: str) -> Union[ApiTokenCredential, AzureClientSecretCredential, BasicCredential, PersonalApiTokenCredential, SshCredential, WifiChoiceCredential]:
@@ -216,6 +227,14 @@ class CredentialManager:
         return
 
     def _validate_credentials(self, cred_list: List[Dict[str, str]]):
+        """
+            Validates a list of credential dictionaries for correctness.
+
+            :param cred_list: List of credential dictionaries.
+
+            :returns: A tuple containing a list of error strings and warning strings.
+        """
+
         errors = []
         warnings = []
 

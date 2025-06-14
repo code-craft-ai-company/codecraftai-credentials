@@ -56,14 +56,31 @@ class BasicCredential(BaseCredential):
 
     @property
     def password(self):
+        """
+            Returns the password associated with this credential.
+
+            :returns: The password string.
+        """
         return self._password
 
     @property
     def username(self):
+        """
+            Returns the username associated with this credential.
+
+            :returns: The username string.
+        """
         return self._username
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates the dictionary describing a basic credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 

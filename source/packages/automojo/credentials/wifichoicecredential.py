@@ -51,10 +51,22 @@ class WifiChoiceCredential(BaseCredential):
 
     @property
     def networks(self):
+        """
+            Returns the list of wifi network credentials.
+
+            :returns: A list of dictionaries describing SSIDs and passwords.
+        """
         return self._networks
 
     @classmethod
     def validate(cls, cred_info: dict):
+        """
+            Validates a dictionary describing a wifi-choice credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 

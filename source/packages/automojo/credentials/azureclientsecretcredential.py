@@ -54,18 +54,40 @@ class AzureClientSecretCredential(BaseCredential):
 
     @property
     def client_id(self):
+        """
+            Returns the Azure client identifier for this credential.
+
+            :returns: Azure client identifier.
+        """
         return self._client_id
     
     @property
     def client_secret(self):
+        """
+            Returns the Azure client secret.
+
+            :returns: The client secret string.
+        """
         return self._client_secret
 
     @property
     def tenant_id(self):
+        """
+            Returns the Azure tenant identifier.
+
+            :returns: The tenant identifier string.
+        """
         return self._tenant_id
 
     @classmethod
     def validate(cls, cred_info):
+        """
+            Validates a dictionary describing an Azure client secret credential.
+
+            :param cred_info: Credential definition dictionary to validate.
+
+            :returns: None
+        """
 
         errmsg_lines = []
 
