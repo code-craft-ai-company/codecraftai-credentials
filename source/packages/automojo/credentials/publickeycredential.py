@@ -26,7 +26,7 @@ class PublicKeyCredential(BaseCredential):
 
         .. code:: yaml
             "identifier": "somename"
-            "category": "public-key""
+            "category": "public-key"
             "public": "FETD64DUFYLUFY"
             "private": "B130909CD9744F1E8679755034F9E70B08519F16C3DE46FCBFE82117F2794BA1"
 
