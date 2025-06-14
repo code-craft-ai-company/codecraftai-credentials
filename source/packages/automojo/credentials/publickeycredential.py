@@ -1,10 +1,10 @@
 """
-.. module:: publickeycredential
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`PublicKeyCredential` which is a simple
-               username and password based credential.
+    .. module:: publickeycredential
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`PublicKeyCredential` which represents
+                   a public and private key pair.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"

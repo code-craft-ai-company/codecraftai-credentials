@@ -1,10 +1,10 @@
 """
-.. module:: azureclientsecretcredential
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`AzureClientSecretCredential` which is used
-    for application access to Azure.
+    .. module:: azureclientsecretcredential
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`AzureClientSecretCredential` which is used
+            for application access to Azure.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"

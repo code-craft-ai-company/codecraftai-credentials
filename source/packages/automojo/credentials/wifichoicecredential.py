@@ -1,10 +1,10 @@
 """
-.. module:: wifichoicecredential
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`WifiChoiceCredential` which provides support
-               for a list of SSID and password credentials.
+    .. module:: wifichoicecredential
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`WifiChoiceCredential` which provides support
+                   for a list of SSID and password credentials.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"

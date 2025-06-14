@@ -1,10 +1,10 @@
 """
-.. module:: credentialmanager
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`CredentialManager` which is used to
-               load credentials.
+    .. module:: credentialmanager
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`CredentialManager` which is used to
+                   load credentials.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"
@@ -70,6 +70,10 @@ class CredentialManager:
 
     def load_credentials(self, credential_info: dict, source_uris: Optional[List[str]] = None):
         """
+            Loads credentials from a dictionary object.
+
+            :param credential_info: Dictionary containing credential definitions.
+            :param source_uris: Optional list of source URIs for the credentials.
         """
 
         if source_uris != None:
@@ -308,14 +312,13 @@ class CredentialManager:
     def _validate_credential_ssh(self, cred: Dict[str, str]):
         """
             Validates the non-common fields of an 'ssh' credential.
-        """
-        """
-        -   "identifier": "some-node"
-            "category": "ssh"
-            "username": "ubuntu"
-            "password": "blahblah"
-            "keyfile": "~/.ssh/id_somenode_rsa"
 
+            Example::
+                "identifier": "some-node"
+                "category": "ssh"
+                "username": "ubuntu"
+                "password": "blahblah"
+                "keyfile": "~/.ssh/id_somenode_rsa"
         """
         errors = []
         warnings = []

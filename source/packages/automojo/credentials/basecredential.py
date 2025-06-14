@@ -1,10 +1,10 @@
 """
-.. module:: basecredential
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`BaseCredential` object which is the
-               common base class that all other credential objects inherit from.
+    .. module:: basecredential
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`BaseCredential` object which is the
+                   common base class that all other credential objects inherit from.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"
@@ -62,7 +62,7 @@ class BaseCredential:
         rtnval = {
             "identifier": self._identifier,
             "categories": self._categories,
-            "rolse": self._role
+            "role": self._role
         }
         
         return rtnval

@@ -1,10 +1,10 @@
 """
-.. module:: apitokencredential
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`ApiTokenCredential` which is a simple
-               to hold and api token.
+    .. module:: apitokencredential
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`ApiTokenCredential` which is a simple
+                   container used to hold an API token.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"
