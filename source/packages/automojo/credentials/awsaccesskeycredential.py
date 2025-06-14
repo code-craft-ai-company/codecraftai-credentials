@@ -1,10 +1,10 @@
 """
-.. module:: apitokencredential
-    :platform: Darwin, Linux, Unix, Windows
-    :synopsis: Module that contains the :class:`BasicCredential` which is a simple
-               username and password based credential.
+    .. module:: awsaccesskeycredential
+        :platform: Darwin, Linux, Unix, Windows
+        :synopsis: Module that contains the :class:`AwsAccessKeyCredential` which
+                   represents an AWS access key credential.
 
-.. moduleauthor:: Myron Walker <myron.walker@gmail.com>
+    .. moduleauthor:: Myron Walker <myron.walker@gmail.com>
 """
 
 __author__ = "Myron Walker"
