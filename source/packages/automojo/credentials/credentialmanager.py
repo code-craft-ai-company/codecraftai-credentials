@@ -25,6 +25,7 @@ from automojo.credentials.azureclientsecretcredential import AzureClientSecretCr
 from automojo.credentials.basiccredential import BasicCredential
 from automojo.credentials.personalapitokencredential import PersonalApiTokenCredential
 from automojo.credentials.publickeycredential import PublicKeyCredential
+from automojo.credentials.secrettokencredential import SecretTokenCredential
 from automojo.credentials.sshcredential import SshCredential
 from automojo.credentials.wifichoicecredential import WifiChoiceCredential
 
@@ -189,6 +190,11 @@ class CredentialManager:
                             elif category == "public-key":
                                 PublicKeyCredential.validate(credential)
                                 credobj = PublicKeyCredential(**credential)
+                                self._credentials[ident] = credobj
+
+                            elif category == "secret-token":
+                                SecretTokenCredential.validate(credential)
+                                credobj = SecretTokenCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "ssh":
