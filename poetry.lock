@@ -22,7 +22,7 @@ pymongo = ["pymongo (>=4.13.2,<5.0.0)"]
 
 [package.source]
 type = "git"
-url = "git@github.com:automationmojo/automojo-configuration.git"
+url = "https://github.com/automationmojo/automojo-configuration.git"
 reference = "main"
 resolved_reference = "5dfdefe7662ac63541355dada12b35e2cfdc9e27"
 
@@ -524,4 +524,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<4.0"
-content-hash = "f5e4d71f526cb40df9a46fef57e8afd0bdd699e3e1323a924fc1f522e3eae237"
+content-hash = "ac2e5236a0a680a46abbc0c1b52007c62cf289283f835a9acfa6f4d5ea056c1f"
