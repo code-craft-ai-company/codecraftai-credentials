@@ -44,7 +44,9 @@ class WifiChoiceCredential(BaseCredential):
         super().__init__(identifier=identifier, categories=categories, role=role)
 
         if "wifi-choice" not in categories:
-            raise ConfigurationError("The WifiChoiceCredential should only be given credentials of category 'basic'.")
+            raise ConfigurationError(
+                "The WifiChoiceCredential should only be given credentials of category 'wifi-choice'."
+            )
         if len(networks) == 0:
             raise ConfigurationError("The WifiChoiceCredential constructor should have at least one network.")
 
@@ -72,11 +74,11 @@ class WifiChoiceCredential(BaseCredential):
 
         errmsg_lines = []
 
-        if "networks" not in cred_info:
+        networks = cred_info.get("networks")
+        if networks is None:
             errmsg_lines.append("    * missing 'networks' field on wifi-choice credential.")
-
-        networks = cred_info["networks"]
-        if len(networks) == 0:
+            networks = []
+        elif len(networks) == 0:
             errmsg_lines.append("    * empty 'networks' field on wifi-choice credential.")
 
         for nidx, network_info in enumerate(networks):
