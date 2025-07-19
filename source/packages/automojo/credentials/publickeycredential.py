@@ -86,10 +86,10 @@ class PublicKeyCredential(BaseCredential):
         errmsg_lines = []
 
         if "public" not in cred_info:
-                errmsg_lines.append("    * missing 'public' in a public key credential.")
-        
+            errmsg_lines.append("    * missing 'public' in a public key credential.")
+
         if "private" not in cred_info:
-                errmsg_lines.append("    * missing 'private' in a public key credential.")
+            errmsg_lines.append("    * missing 'private' in a public key credential.")
 
         if len(errmsg_lines) > 0:
             identifier = "????"
