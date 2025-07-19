@@ -19,6 +19,10 @@ class TestApiTokenCredential(unittest.TestCase):
         with self.assertRaises(ConfigurationError):
             ApiTokenCredential(identifier=self.identifier, categories=self.categories, token="")
 
+    def test_init_with_none_token_raises(self):
+        with self.assertRaises(ConfigurationError):
+            ApiTokenCredential(identifier=self.identifier, categories=self.categories, token=None)
+
     def test_default_role_is_priv(self):
         cred = ApiTokenCredential(identifier=self.identifier, categories=self.categories, token=self.token)
         self.assertEqual(cred.role, "priv")
