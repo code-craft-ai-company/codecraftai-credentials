@@ -14,9 +14,9 @@ __credits__ = []
 
 from threading import RLock
 
-from automojo.foundation.collections.wellknown import ContextSingleton
-from automojo.foundation.collections.contextpaths import ContextPaths
-from automojo.foundation.configuration.configurationmaps import CONFIGURATION_MAPS
+from automojo.xmodules.xcollections.wellknown import ContextSingleton
+from automojo.presence.contextpaths import ContextPaths
+from automojo.configuration.configurationmaps import CONFIGURATION_MAPS
 
 from automojo.credentials.credentialmanager import CredentialManager
 
