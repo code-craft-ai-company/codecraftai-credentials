@@ -32,9 +32,9 @@ class SecretTokenCredential(BaseCredential):
 
     """
 
-    def __init__(self, *, identifier: str, categories: List[str], endpoint: str, token: str , role: Optional[str] = "priv"):
+    def __init__(self, *, identifier: str, categories: List[str], endpoint: str, token: str, role: Optional[str] = "priv"):
         """
-            Initializes a :class:`PersonalApiTokenCredential` instance.
+            Initializes a :class:`SecretTokenCredential` instance.
 
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
@@ -66,7 +66,7 @@ class SecretTokenCredential(BaseCredential):
     @property
     def token(self):
         """
-            Returns the personal API token.
+            Returns the secret token.
 
             :returns: The token string.
         """
@@ -75,7 +75,7 @@ class SecretTokenCredential(BaseCredential):
     @classmethod
     def validate(cls, cred_info):
         """
-            Validates the dictionary describing a personal API token credential.
+            Validates the dictionary describing a secret token credential.
 
             :param cred_info: Credential definition dictionary to validate.
 
@@ -95,7 +95,7 @@ class SecretTokenCredential(BaseCredential):
             if "identifier" in cred_info:
                 identifier = cred_info["identifier"]
 
-            errmsg = "Errors found while validating the '{}' personal api token credential:".format(identifier)
+            errmsg = "Errors found while validating the '{}' secret token credential:".format(identifier)
             errmsg_lines.insert(0, errmsg)
             errmsg = os.linesep.join(errmsg_lines)
 
