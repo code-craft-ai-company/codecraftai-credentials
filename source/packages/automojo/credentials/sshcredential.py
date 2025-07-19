@@ -36,8 +36,8 @@ class SshCredential(BaseCredential):
     """
 
     def __init__(self, *, identifier: str, categories: List[str], username: str, role: Optional[str] = "priv",
-                 password: Optional[str] = None, keyfile: Optional[str] = None, keyraw: Optional[str]= None,
-                 keypasswd: Optional[str] = None, allow_agent: bool = False, primitive: bool=False):
+                 password: Optional[str] = None, keyfile: Optional[str] = None, keyraw: Optional[str] = None,
+                 keypasswd: Optional[str] = None, allow_agent: bool = False, primitive: bool = False):
         """
             Initializes an :class:`SshCredential` instance.
 
@@ -60,12 +60,12 @@ class SshCredential(BaseCredential):
             raise ConfigurationError("The SshCredential should only be given credentials of category 'ssh'.")
         if len(username) == 0:
             raise ConfigurationError("The SshCredential constructor requires a 'username' parameter be provided.")
+        if keyfile is not None and keyraw is not None:
+            raise ConfigurationError("The SshCredential constructor should only have either a keyfile or keyraw parameter but not both.")
+
         if password is None:
-            if not allow_agent:
-                if keyfile is None and keyraw is None:
-                    raise ConfigurationError("The SshCredential constructor requires one of: 'password is not None', 'keyfile is not None', 'keyraw is not None', 'allow_agent == True'.")
-                elif keyfile is not None and keyraw is not None:
-                    raise ConfigurationError("The SshCredential constructor should only have either a keyfile or keyraw parameter but not both.")
+            if not allow_agent and keyfile is None and keyraw is None:
+                raise ConfigurationError("The SshCredential constructor requires one of: 'password is not None', 'keyfile is not None', 'keyraw is not None', 'allow_agent == True'.")
 
         self._username = username
         self._password = password
@@ -198,7 +198,7 @@ class SshCredential(BaseCredential):
         rtnval["primitive"] = self._primitive
 
         if self._password is not None:
-            rtnval["password"] =  self._password
+            rtnval["password"] = self._password
 
         if self._keyfile is not None:
             rtnval["keyfile"] = self._keyfile
