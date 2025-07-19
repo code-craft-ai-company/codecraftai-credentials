@@ -37,20 +37,21 @@ class ApiTokenCredential(BaseCredential):
 
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
-            :param token: A token that services as an identity and authenticate to allow the use of specific APIs.
+            :param token: A token that serves as an identity credential used to authenticate
+                            access to specific APIs.
         """
         super().__init__(identifier=identifier, categories=categories, role=role)
 
         if "api-token" not in categories:
             raise ConfigurationError("The ApiTokenCredential should only be given credentials of category 'api-token'.")
-        if len(token) == 0:
+        if token is None or len(token) == 0:
             raise ConfigurationError("The ApiTokenCredential constructor requires a 'token' parameter be provided.")
         
         self._token = token
         return
 
     @property
-    def token(self):
+    def token(self) -> str:
         """
             Returns the API token string.
 
@@ -59,7 +60,7 @@ class ApiTokenCredential(BaseCredential):
         return self._token
 
     @classmethod
-    def validate(cls, cred_info):
+    def validate(cls, cred_info: Dict[str, Any]) -> None:
         """
             Validates the dictionary describing an API token credential.
 
