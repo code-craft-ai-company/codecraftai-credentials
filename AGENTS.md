@@ -5,22 +5,54 @@ AI Agents working in this repository should refer to themselves as an agent name
 
 
 # Testing Conventions
-The 'automojo-credentials' package repository utilizes the 'unittest' framework in order to test the functionality of the code.
+The 'automojo-credentials' package repository utilizes the 'testbase' framework in order to run tests.  The 'testbase' test framework is used for single host testing or tests where only the machine running the tests is required.
 
-## Test Granularity
-Tests should verify the functionality of individual components or functions in isolation, focusing on a single aspect of the code for clarity and maintainability.
+Test are organized at the lowest level by resource configuration.  For example, all the single host tests are in the folder 'source/testroots/automojo/tests/singlehost'.
 
-Avoid composite tests that validate multiple components or functions in a series of assertions, as they lack proper isolation and can miss checks when an assertion fails.
+AI based testing should run only the 'singlehost' tests tests with:
 
-Use Python's `unittest` framework with `setUp` and `tearDown` methods to establish shared conditions across tests while maintaining separation of concerns.
+```
+    source .venv/bin/activate
+    
+    testbase testin run --root source/testroots/automojo --includes=automojo.tests.singlehost --output=<desired output folder>
+```
+
+When running tests you should create an output folder in order to be able to capture all the test run artifacts in an isolated folder.
 
 # Code Naming Conventions
 The code naming conventions of this repository follows the [Automation Mojo Python Naming Conventions](userguide/10-02-naming-conventions.rst)
+
+## Documentation Comments
+Documentation comments use sphinx style.  I do not put the parameter types in the comment because all the function should use type hinting.  There should be no need to duplicate the type information in the comments.  The text of the doc comment should be indented four spaces to the inside of the start of the triple quote.  The following is an example.
+
+```
+def repeat(what: str, count: int) -> List[str]:
+    """
+        This function repeats what you feed it up to 100 times.
+
+        :param what: What you want repeated.
+        :param count: How many times to repeat it.
+    
+        :returns: The repeated strings.
+        :raises: ValueError if you tyr to repeat more than 100 times.
+    """
+
+    if count > 100:
+        raise ValueError("The 'count' parameter cannot exceed 100.")
+
+    rtnval = [what for _ in range(0, count - 1)]
+
+    return rtnval
+```
 
 
 # Code Structure
 The code structure of this repository follows the [Automation Mojo Python Code Structure Standards](userguide/10-01-code-organization.rst)
 
+Remember to make the test hierarchy match the source hierarchy when adding test files.  For example:
+
+File to test: 'source/packages/automojo/credentials/credentials/credentialmanager.py'
+Test file location: 'source/testroots/automojo/tests/singlehost/credentials/test_credentialmanager.py'
 
 # Coding Standards
 The code in this repository is meant to be utilized by testing tools and test frameworks.  Therefore, the code must prioritize:
@@ -30,6 +62,94 @@ The code in this repository is meant to be utilized by testing tools and test fr
 
 For all the code in this repository, follow the coding standards specified at [Coding Standards](userguide/10-00-coding-standards.rst)
 
+# Writing Tests
+
+A 'testbase' test takes the form of a function with a 'test_' prefix like so:
+
+```
+def test_something():
+    return
+```
+
+If a test raises an AssertionError, then it checked something and the check failed.  That is a Failure.  If the test raises any other exception, then the test framework treats that as an Error much like the 'unittest' framework does.
+
+You can create resource factories.
+
+```
+@testbase.register.resource_factory()
+def create_landscape(constraints={}) -> Generator[Landscape, None, None]:
+    """
+        Creates the global :class:`Landscape` instance.
+
+        :param constraints: Optional dictionary of constraints used while constructing the Landscape.
+
+        :returns: A generator yielding the Landscape object.
+    """
+    lscape = LandscapeSingleton()
+    yield lscape
+```
+
+You can create resources using the factories in a scope in the test tree.  Resources have scope for every test below where they are declared.
+
+```
+testbase.originate.parameter(create_landscape, identifier='lscape')
+```
+
+To use a resource in a descendant test scope, just reference it by name in the test function signature like:
+
+```
+def test_use_landscape(lscape: Landscape):
+
+    blah = lscape.get_something()
+    testbase.assert_equal(blah is not None, True)
+    return
+
+```
+
+The test tree should only contain resource origination declarations and tests.  It should not contain factories unless the usage of the factory is very isolated.  It is preferable to place factories in a folder such as a factory that creates the AutomationPodSimple object might be located at 'source/testroots/automojo/testshared/factories/automationpods/automationpodsimple.py'
+
+# Evaluating Test Results
+There is a machine processable JSOS stream file in the output folder.
+
+"*outputfolder*/testrun_results_stream.jsos"
+
+JSOS (JSON Object Stream) consists of a stream of JSON objects seperated by the the ASCII record seperator character.  When a
+test starts it writes a preview to the stream.  The test preview has a 'result' equal to 'UNSET'.  Example Preview:
+
+```
+{
+    "name": "automojo.tests.singlehost.interop.protocols.dns.test_dnsaddress#test_write_passes_address",
+    "monikers": [],
+    "pivots": {},
+    "instance": "abb868e4-ce97-4bae-b0af-715da0d61d92",
+    "parent": "5aad244e-41dc-438f-97a6-bd8365cccdd2",
+    "rtype": "TEST",
+    "result": "UNSET",
+    "start": "2025-07-15T22:07:03.275239",
+    "stop": ""
+}
+```
+
+When a test finishes it writes a result to the stream.  A test result will always have a 'detail' attribute. Example Result:
+
+```
+{
+    "name": "automojo.tests.singlehost.interop.protocols.dns.test_dnsaddress#test_write_passes_address",
+    "monikers": [],
+    "pivots": {},
+    "instance": "abb868e4-ce97-4bae-b0af-715da0d61d92",
+    "parent": "5aad244e-41dc-438f-97a6-bd8365cccdd2",
+    "rtype": "TEST",
+    "result": "PASSED",
+    "start": "2025-07-15T22:07:03.275239",
+    "stop": "2025-07-15T22:07:03.276034",
+    "detail": {
+        "errors": [],
+        "failures": [],
+        "warnings": []
+    }
+}
+```
 
 # Environment Setup
 When checking out the code for this repository in order to test changes, agents must:
@@ -38,25 +158,6 @@ When checking out the code for this repository in order to test changes, agents 
 * run the 'development/setup-envrionment' script in order to create the virtual environment.
 
 # Project Specific Rules
-
-
-# Running Tests
-In order to run the unittest tests, you must first enter the virtual environment by running the command:
-
-```
-    source <repository-root>/.venv/bin/activate
-```
-
-When you setup the environment, the '.venv/bin/activate' script is modified so that it will pull in the appropriate environment
-variables from the '.env' file.
-
-For running the 'unittest' tests located under the folder '<repository-root>/source/tests', use the command:
-
-```
-    cd <repository-root>
-
-    python -m unittest discover -s source/tests -p "test_*.py"
-```
 
 
 # Pull Request Guidelines
