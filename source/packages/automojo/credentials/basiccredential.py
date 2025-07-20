@@ -40,8 +40,7 @@ class BasicCredential(BaseCredential):
             :param identifier: The identifier that is used to reference this credential.  (required)
             :param categories: The categories of authentication that are supported by the credential
             :param username: The username associated with this credential.
-            :param password: The password associated with this credential.  A password is not required if a
-                             keyfile parameter is provided or if 'allow_agent' is passed as 'True'.
+            :param password: The password associated with this credential.
         """
         super().__init__(identifier=identifier, categories=categories, role=role)
 
@@ -49,8 +48,8 @@ class BasicCredential(BaseCredential):
             raise ConfigurationError("The BasicCredential should only be given credentials of category 'basic'.")
         if len(username) == 0:
             raise ConfigurationError("The BasicCredential constructor requires a 'username' parameter be provided.")
-        if len(password) == 0:
-            raise ConfigurationError("The BasicCredential constructor requires one of: 'password is not None'.")
+        if password is None or len(password) == 0:
+            raise ConfigurationError("The BasicCredential constructor requires a 'password' parameter be provided.")
 
         self._username = username
         self._password = password
