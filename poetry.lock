@@ -137,7 +137,7 @@ click = "^8.1.8"
 type = "git"
 url = "https://github.com/automationmojo/automojo-testbase.git"
 reference = "main"
-resolved_reference = "e5c281d861e16f743dedbc8df738ec372a7cc1ac"
+resolved_reference = "5bfbefbcbb8052ab4c85b508a07fbfc60e110d0b"
 
 [[package]]
 name = "automojo-waiting"
@@ -612,4 +612,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<4.0"
-content-hash = "54ad3e6572f8a39b405656479260af5900a4aac0587dc362ebab8a9c08cdcce9"
+content-hash = "778dfda581ffa103727a99f665b21ee7c65d1e5967dc74a46be6908462f1b879"
