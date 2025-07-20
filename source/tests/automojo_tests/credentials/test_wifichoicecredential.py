@@ -41,16 +41,14 @@ class TestWifiChoiceCredential(unittest.TestCase):
         }
         self.assertEqual(cred.as_dict(), expected)
 
-    def test_validate_missing_networks_raises(self):
+    def test_validate_missing_networks_reports_error(self):
         cred_info = {
             "identifier": self.identifier,
             "categories": self.categories,
         }
-        with self.assertRaises(ConfigurationError) as cm:
-            WifiChoiceCredential.validate(cred_info)
-        msg = str(cm.exception)
-        self.assertIn("missing 'networks' field", msg)
-        self.assertIn(self.identifier, msg)
+        errors, warnings = WifiChoiceCredential.validate(cred_info)
+        self.assertIn("missing 'networks' field on wifi-choice credential.", errors)
+        self.assertEqual(len(warnings), 0)
 
     def test_validate_empty_networks_raises(self):
         cred_info = {
@@ -58,10 +56,9 @@ class TestWifiChoiceCredential(unittest.TestCase):
             "categories": self.categories,
             "networks": [],
         }
-        with self.assertRaises(ConfigurationError) as cm:
-            WifiChoiceCredential.validate(cred_info)
-        msg = str(cm.exception)
-        self.assertIn("empty 'networks' field", msg)
+        errors, warnings = WifiChoiceCredential.validate(cred_info)
+        self.assertIn("empty 'networks' field on wifi-choice credential.", errors)
+        self.assertEqual(len(warnings), 0)
 
     def test_validate_missing_network_fields_raises(self):
         cred_info = {
@@ -69,11 +66,10 @@ class TestWifiChoiceCredential(unittest.TestCase):
             "categories": self.categories,
             "networks": [{}],
         }
-        with self.assertRaises(ConfigurationError) as cm:
-            WifiChoiceCredential.validate(cred_info)
-        msg = str(cm.exception)
-        self.assertIn("missing the 'ssid' field", msg)
-        self.assertIn("missing the 'password' field", msg)
+        errors, warnings = WifiChoiceCredential.validate(cred_info)
+        self.assertTrue(any("missing the 'ssid' field" in err for err in errors))
+        self.assertTrue(any("missing the 'password' field" in err for err in errors))
+        self.assertEqual(len(warnings), 0)
 
     def test_validate_ok_does_not_raise(self):
         cred_info = {
@@ -81,10 +77,9 @@ class TestWifiChoiceCredential(unittest.TestCase):
             "categories": self.categories,
             "networks": self.networks,
         }
-        try:
-            WifiChoiceCredential.validate(cred_info)
-        except ConfigurationError as exc:
-            self.fail(f"validate raised unexpectedly: {exc}")
+        errors, warnings = WifiChoiceCredential.validate(cred_info)
+        self.assertEqual(len(errors), 0)
+        self.assertEqual(len(warnings), 0)
 
 
 if __name__ == "__main__":

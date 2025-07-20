@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import os
 
@@ -82,38 +82,28 @@ class AzureClientSecretCredential(BaseCredential):
         return self._tenant_id
 
     @classmethod
-    def validate(cls, cred_info):
+    def validate(cls, cred_info) -> Tuple[List[str], List[str]]:
         """
             Validates a dictionary describing an Azure client secret credential.
 
             :param cred_info: Credential definition dictionary to validate.
 
-            :returns: None
+            :returns: A tuple of lists containing errors and warnings.
         """
 
-        errmsg_lines = []
+        errors = []
+        warnings = []
 
         if "client_id" not in cred_info:
-                errmsg_lines.append("    * missing 'client_id' in azure-client-secret credential.")
+            errors.append("missing 'client_id' in azure-client-secret credential.")
 
         if "client_secret" not in cred_info:
-                errmsg_lines.append("    * missing 'client_secret' in azure-client-secret credential.")
+            errors.append("missing 'client_secret' in azure-client-secret credential.")
 
         if "tenant_id" not in cred_info:
-                errmsg_lines.append("    * missing 'tenant_id' in azure-client-secret credential.")
+            errors.append("missing 'tenant_id' in azure-client-secret credential.")
 
-        if len(errmsg_lines) > 0:
-            identifier = "????"
-            if "identifier" in cred_info:
-                identifier = cred_info["identifier"]
-
-            errmsg = "Errors found while validating the '{}' azure-client-secret credential:".format(identifier)
-            errmsg_lines.insert(0, errmsg)
-            errmsg = os.linesep.join(errmsg_lines)
-
-            raise ConfigurationError(errmsg) from None
-
-        return
+        return errors, warnings
 
     def as_dict(self) -> Dict[str, Any]:
         """

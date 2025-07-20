@@ -41,13 +41,11 @@ class TestApiTokenCredential(unittest.TestCase):
         }
         self.assertEqual(cred.as_dict(), expected)
 
-    def test_validate_missing_token_raises(self):
+    def test_validate_missing_token_reports_error(self):
         cred_info = {"identifier": self.identifier, "categories": self.categories}
-        with self.assertRaises(ConfigurationError) as cm:
-            ApiTokenCredential.validate(cred_info)
-        msg = str(cm.exception)
-        self.assertIn("missing 'token' in api token credential", msg)
-        self.assertIn(self.identifier, msg)
+        errors, warnings = ApiTokenCredential.validate(cred_info)
+        self.assertIn("missing 'token' in api token credential.", errors)
+        self.assertEqual(len(warnings), 0)
 
     def test_validate_ok_does_not_raise(self):
         cred_info = {
@@ -55,10 +53,9 @@ class TestApiTokenCredential(unittest.TestCase):
             "categories": self.categories,
             "token": self.token,
         }
-        try:
-            ApiTokenCredential.validate(cred_info)
-        except ConfigurationError as exc:
-            self.fail(f"validate raised unexpectedly: {exc}")
+        errors, warnings = ApiTokenCredential.validate(cred_info)
+        self.assertEqual(len(errors), 0)
+        self.assertEqual(len(warnings), 0)
 
 
 if __name__ == "__main__":
