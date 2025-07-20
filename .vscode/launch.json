@@ -14,20 +14,20 @@
             "envFile": "${workspaceFolder}/.env"
         },
         {
-            "name": "Python: Run Unit Tests",
+            "name": "Python: Internal Tests - Run",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/.venv/bin/python",
+            "program": "${workspaceFolder}/.venv/bin/testbase",
+            "envFile": "${workspaceFolder}/.env",
             "args": [
-                "-m",
-                "unittest",
-                "discover",
-                "-s",
-                "{workspaceFolder}/source/tests",
-                "-p",
-                "test_*.py"
+                "testing",
+                "run",
+                "--root=${workspaceFolder}/source/testroots/automojo",
+                "--includes=automojo.tests.singlehost",
+                "--breakpoint=testrun-start"
             ],
-            "envFile": "${workspaceFolder}/.env"
+            "console": "integratedTerminal",
+            "justMyCode": false,
         }
     ]
 }
