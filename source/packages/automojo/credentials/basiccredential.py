@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import os
 
@@ -75,35 +75,25 @@ class BasicCredential(BaseCredential):
         return self._username
 
     @classmethod
-    def validate(cls, cred_info):
+    def validate(cls, cred_info) -> Tuple[List[str], List[str]]:
         """
             Validates the dictionary describing a basic credential.
 
             :param cred_info: Credential definition dictionary to validate.
 
-            :returns: None
+            :returns: A tuple of lists containing errors and warnings.
         """
 
-        errmsg_lines = []
+        errors = []
+        warnings = []
 
         if "password" not in cred_info:
-                errmsg_lines.append("    * missing 'password' in basic credential.")
+            errors.append("missing 'password' in basic credential.")
 
         if "username" not in cred_info:
-                errmsg_lines.append("    * missing 'username' in basic credential.")
+            errors.append("missing 'username' in basic credential.")
 
-        if len(errmsg_lines) > 0:
-            identifier = "????"
-            if "identifier" in cred_info:
-                identifier = cred_info["identifier"]
-
-            errmsg = "Errors found while validating the '{}' basic credential:".format(identifier)
-            errmsg_lines.insert(0, errmsg)
-            errmsg = os.linesep.join(errmsg_lines)
-
-            raise ConfigurationError(errmsg) from None
-
-        return
+        return errors, warnings
 
     def as_dict(self) -> Dict[str, Any]:
         """

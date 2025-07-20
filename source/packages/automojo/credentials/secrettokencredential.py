@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import os
 
@@ -73,35 +73,25 @@ class SecretTokenCredential(BaseCredential):
         return self._token
 
     @classmethod
-    def validate(cls, cred_info):
+    def validate(cls, cred_info) -> Tuple[List[str], List[str]]:
         """
             Validates the dictionary describing a secret token credential.
 
             :param cred_info: Credential definition dictionary to validate.
 
-            :returns: None
+            :returns: A tuple of lists containing errors and warnings.
         """
 
-        errmsg_lines = []
+        errors = []
+        warnings = []
 
         if "endpoint" not in cred_info:
-            errmsg_lines.append("    * missing 'endpoint' in secret token credential.")
-        
+            errors.append("missing 'endpoint' in secret token credential.")
+
         if "token" not in cred_info:
-            errmsg_lines.append("    * missing 'token' in secret token credential.")
+            errors.append("missing 'token' in secret token credential.")
 
-        if len(errmsg_lines) > 0:
-            identifier = "????"
-            if "identifier" in cred_info:
-                identifier = cred_info["identifier"]
-
-            errmsg = "Errors found while validating the '{}' secret token credential:".format(identifier)
-            errmsg_lines.insert(0, errmsg)
-            errmsg = os.linesep.join(errmsg_lines)
-
-            raise ConfigurationError(errmsg) from None
-
-        return
+        return errors, warnings
 
     def as_dict(self) -> Dict[str, Any]:
         """

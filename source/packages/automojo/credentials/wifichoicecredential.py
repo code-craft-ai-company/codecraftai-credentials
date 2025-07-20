@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import os
 
@@ -63,45 +63,35 @@ class WifiChoiceCredential(BaseCredential):
         return self._networks
 
     @classmethod
-    def validate(cls, cred_info: dict):
+    def validate(cls, cred_info: dict) -> Tuple[List[str], List[str]]:
         """
             Validates a dictionary describing a wifi-choice credential.
 
             :param cred_info: Credential definition dictionary to validate.
 
-            :returns: None
+            :returns: A tuple of lists containing errors and warnings.
         """
 
-        errmsg_lines = []
+        errors = []
+        warnings = []
 
         networks = cred_info.get("networks")
         if networks is None:
-            errmsg_lines.append("    * missing 'networks' field on wifi-choice credential.")
+            errors.append("missing 'networks' field on wifi-choice credential.")
             networks = []
         elif len(networks) == 0:
-            errmsg_lines.append("    * empty 'networks' field on wifi-choice credential.")
+            errors.append("empty 'networks' field on wifi-choice credential.")
 
         for nidx, network_info in enumerate(networks):
             if "ssid" not in network_info:
-                errmsg = "    * 'networks' item {} is missing the 'ssid' field on wifi-choice credential.".format(nidx)
-                errmsg_lines.append(errmsg)
+                errmsg = "'networks' item {} is missing the 'ssid' field on wifi-choice credential.".format(nidx)
+                errors.append(errmsg)
             
             if "password" not in network_info:
-                errmsg = "    * 'networks' item {} is missing the 'password' field on wifi-choice credential.".format(nidx)
-                errmsg_lines.append(errmsg)
+                errmsg = "'networks' item {} is missing the 'password' field on wifi-choice credential.".format(nidx)
+                errors.append(errmsg)
 
-        if len(errmsg_lines) > 0:
-            identifier = "????"
-            if "identifier" in cred_info:
-                identifier = cred_info["identifier"]
-            
-            errmsg = "Errors found while validating the '{}' wifi-choice credential:".format(identifier)
-            errmsg_lines.insert(0, errmsg)
-            errmsg = os.linesep.join(errmsg_lines)
-
-            raise ConfigurationError(errmsg) from None
-
-        return
+        return errors, warnings
 
     def as_dict(self) -> Dict[str, Any]:
         """

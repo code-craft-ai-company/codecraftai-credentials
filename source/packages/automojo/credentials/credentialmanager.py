@@ -59,7 +59,14 @@ class CredentialManager:
         """
         return self._credentials
 
-    def lookup_credential(self, credkey: str) -> Union[ApiTokenCredential, AzureClientSecretCredential, BasicCredential, PersonalApiTokenCredential, SshCredential, WifiChoiceCredential]:
+    def lookup_credential(self, credkey: str) -> Union[ApiTokenCredential,
+                                                      AzureClientSecretCredential,
+                                                      BasicCredential,
+                                                      PersonalApiTokenCredential,
+                                                      PublicKeyCredential,
+                                                      SecretTokenCredential,
+                                                      SshCredential,
+                                                      WifiChoiceCredential]:
         """
             Lookup a credential by key.
         """
@@ -150,7 +157,6 @@ class CredentialManager:
                                 username = credential["username"]
                                 password = credential["password"]
 
-                                BasicCredential.validate(credential)
                                 credobj = BasicCredential(identifier=ident, categories=categories, username=username, password=password)
                                 
                                 self._credentials[ident] = credobj
@@ -163,53 +169,44 @@ class CredentialManager:
                             category = categories[0]
 
                             if category == "api-token":
-                                ApiTokenCredential.validate(credential)
                                 credobj = ApiTokenCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "aws-access-key":
-                                AwsAccessKeyCredential.validate(credential)
                                 credobj = AwsAccessKeyCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == 'azure-client-secret':
-                                AzureClientSecretCredential.validate(credential)
                                 credobj = AzureClientSecretCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "basic" or category == "rest-basic":
-                                BasicCredential.validate(credential)
                                 credobj = BasicCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "personal-api-token":
-                                PersonalApiTokenCredential.validate(credential)
                                 credobj = PersonalApiTokenCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "public-key":
-                                PublicKeyCredential.validate(credential)
                                 credobj = PublicKeyCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "secret-token":
-                                SecretTokenCredential.validate(credential)
                                 credobj = SecretTokenCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "ssh":
-                                SshCredential.validate(credential)
                                 credobj = SshCredential(**credential)
                                 self._credentials[ident] = credobj
 
                             elif category == "wifi-choice":
-                                WifiChoiceCredential.validate(credential)
                                 credobj = WifiChoiceCredential(**credential)
                                 self._credentials[ident] = credobj
                                 
                             else:
                                 warnmsg = f"Unknown category '{category}' found in credential '{ident}'"
-                                logger.warn(warnmsg)
+                                logger.warning(warnmsg)
 
                 else:
                     errmsg_lines = [
@@ -272,19 +269,16 @@ class CredentialManager:
 
                 if "category" in cinfo:
                     category = cinfo["category"]
-                    del cinfo["category"]
 
                     if isinstance(category, list):
                         categories = category
                     else:
-                        categories = [ category]
+                        categories = [category]
 
-                    cinfo["categories"] = categories
-            
                 elif "categories" in cinfo:
                     categories = cinfo["categories"]
                     if isinstance(categories, str):
-                        categories = [ categories]
+                        categories = [categories]
 
                 if len(categories) > 1:
                     for category in categories:
@@ -299,17 +293,30 @@ class CredentialManager:
                 else:
                     category = categories[0]
 
-                    if category == "basic":
-                        child_errors, child_warnings =  self._validate_credential_basic(cinfo)
-                        errors.extend(child_errors)
-                        warnings.extend(child_warnings)
+                    if category == "basic" or category == "rest-basic":
+                        child_errors, child_warnings = BasicCredential.validate(cinfo)
                     elif category == "ssh":
-                        child_errors, child_warnings =  self._validate_credential_ssh(cinfo)
-                        errors.extend(child_errors)
-                        warnings.extend(child_warnings)
+                        child_errors, child_warnings = SshCredential.validate(cinfo)
+                    elif category == "api-token":
+                        child_errors, child_warnings = ApiTokenCredential.validate(cinfo)
+                    elif category == "aws-access-key":
+                        child_errors, child_warnings = AwsAccessKeyCredential.validate(cinfo)
+                    elif category == "azure-client-secret":
+                        child_errors, child_warnings = AzureClientSecretCredential.validate(cinfo)
+                    elif category == "personal-api-token":
+                        child_errors, child_warnings = PersonalApiTokenCredential.validate(cinfo)
+                    elif category == "public-key":
+                        child_errors, child_warnings = PublicKeyCredential.validate(cinfo)
+                    elif category == "secret-token":
+                        child_errors, child_warnings = SecretTokenCredential.validate(cinfo)
+                    elif category == "wifi-choice":
+                        child_errors, child_warnings = WifiChoiceCredential.validate(cinfo)
                     else:
-                        warnmsg = f"Unknown credential category={category}. info={cinfo}"
-                        warnings.append(warnmsg)
+                        child_errors = []
+                        child_warnings = [f"Unknown credential category={category}. info={cinfo}"]
+
+                    errors.extend(child_errors)
+                    warnings.extend(child_warnings)
 
             else:
                 errmsg = "Credential info has no category. info=%r" % cinfo
@@ -317,57 +324,3 @@ class CredentialManager:
 
         return errors, warnings
 
-    def _validate_credential_basic(self, cred: Dict[str, str]):
-        """
-            Validates the non-common fields of a 'basic' credential.
-        """
-        errors = []
-        warnings = []
-
-        if "username" in cred:
-            if len(cred["username"].strip()) == 0:
-                errmsg = "The 'username' for a basic credential cannot be empty."
-                errors.append(errmsg)
-        else:
-            errmsg = "Basic credentials must have a 'username' field."
-            errors.append(errmsg)
-
-        if "password" not in cred:
-            errmsg = "Basic credentials must have a 'password' field."
-            errors.append(errmsg)
-
-        return errors, warnings
-
-    def _validate_credential_ssh(self, cred: Dict[str, str]):
-        """
-            Validates the non-common fields of an 'ssh' credential.
-
-            Example::
-                "identifier": "some-node"
-                "category": "ssh"
-                "username": "ubuntu"
-                "password": "blahblah"
-                "keyfile": "~/.ssh/id_somenode_rsa"
-        """
-        errors = []
-        warnings = []
-
-        if "username" in cred:
-            if len(cred["username"].strip()) == 0:
-                errmsg = "The 'username' for an SSH credential cannot be empty."
-                errors.append(errmsg)
-        else:
-            errmsg = "SSH credentials must have a 'username' field."
-            errors.append(errmsg)
-
-        if "password" not in cred and "keyfile" not in cred and "keyraw" not in cred:
-            if "allow_agent" not in cred or cred["allow_agent"] == False:
-                errmsg = "SSH credentials must have a 'password, keyfile, keyraw, or allow_agent == True' field."
-                errors.append(errmsg)
-        elif "keyfile" in cred:
-            keyfile = os.path.abspath(os.path.expanduser(os.path.expandvars(cred["keyfile"])))
-            if not os.path.exists(keyfile):
-                errmsg = "The specified SSH keyfile does not exist. file=%s" % keyfile
-                errors.append(errmsg)
-
-        return errors, warnings

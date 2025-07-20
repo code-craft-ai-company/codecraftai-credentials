@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import os
 
@@ -140,52 +140,42 @@ class SshCredential(BaseCredential):
         return self._username
 
     @classmethod
-    def validate(cls, cred_info):
+    def validate(cls, cred_info) -> Tuple[List[str], List[str]]:
         """
             Validates a dictionary describing an SSH credential.
 
             :param cred_info: Credential definition dictionary to validate.
 
-            :returns: None
+            :returns: A tuple of lists containing errors and warnings.
         """
 
-        errmsg_lines = []
+        errors = []
+        warnings = []
 
         allow_agent = False
         if "allow_agent" in cred_info:
             allow_agent = cred_info["allow_agent"]
 
         if "identifier" not in cred_info:
-            errmsg_lines.append("    * missing 'identifier' parameter")
+            errors.append("missing 'identifier' parameter")
 
         if "username" not in cred_info:
-            errmsg_lines.append("    * missing 'username' parameter")
+            errors.append("missing 'username' parameter")
 
         if "password" not in cred_info:
             if  not allow_agent:
                 if "keyfile" not in cred_info and "keyraw" not in cred_info:
-                    errmsg_lines.append("    * missing 'password' or 'keyfile' when allow_agent is 'False'")
+                    errors.append("missing 'password' or 'keyfile' when allow_agent is 'False'")
         
         if "keyfile" in cred_info and "keyraw" in cred_info:
-            errmsg_lines.append("    * both 'keyfile' and 'keyraw' found in ssh credential.")
+            errors.append("both 'keyfile' and 'keyraw' found in ssh credential.")
 
         if "keyfile" in cred_info:
             keyfile = os.path.abspath(os.path.expandvars(os.path.expanduser(cred_info["keyfile"])))
             if not os.path.exists(keyfile):
-                errmsg_lines.append("    * specified 'keyfile={}' not found.".format(keyfile))
+                errors.append("specified 'keyfile={}' not found.".format(keyfile))
 
-        if len(errmsg_lines) > 0:
-            identifier = "????"
-            if "identifier" in cred_info:
-                identifier = cred_info["identifier"]
-
-            errmsg = "Errors found while validating the '{}' SSH credential:".format(identifier)
-            errmsg_lines.insert(0, errmsg)
-            errmsg = os.linesep.join(errmsg_lines)
-
-            raise ConfigurationError(errmsg) from None
-
-        return
+        return errors, warnings
     
     def as_dict(self) -> Dict[str, Any]:
         """
