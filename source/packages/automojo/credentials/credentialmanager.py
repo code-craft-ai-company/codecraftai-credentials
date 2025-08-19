@@ -24,6 +24,7 @@ from automojo.credentials.awsaccesskeycredential import AwsAccessKeyCredential
 from automojo.credentials.azureclientsecretcredential import AzureClientSecretCredential
 from automojo.credentials.basiccredential import BasicCredential
 from automojo.credentials.githubappcredential import GithubAppCredential
+from automojo.credentials.githubtokencredential import GithubTokenCredential
 from automojo.credentials.personalapitokencredential import PersonalApiTokenCredential
 from automojo.credentials.publickeycredential import PublicKeyCredential
 from automojo.credentials.secrettokencredential import SecretTokenCredential
@@ -64,6 +65,7 @@ class CredentialManager:
                                                       AzureClientSecretCredential,
                                                       BasicCredential,
                                                       GithubAppCredential,
+                                                      GithubTokenCredential,
                                                       PersonalApiTokenCredential,
                                                       PublicKeyCredential,
                                                       SecretTokenCredential,
@@ -190,6 +192,10 @@ class CredentialManager:
                                 credobj = GithubAppCredential(**credential)
                                 self._credentials[ident] = credobj
 
+                            elif category == "github-token":
+                                credobj = GithubTokenCredential(**credential)
+                                self._credentials[ident] = credobj
+
                             elif category == "personal-api-token":
                                 credobj = PersonalApiTokenCredential(**credential)
                                 self._credentials[ident] = credobj
@@ -311,6 +317,8 @@ class CredentialManager:
                         child_errors, child_warnings = AzureClientSecretCredential.validate(cinfo)
                     elif category == "github-app":
                         child_errors, child_warnings = GithubAppCredential.validate(cinfo)
+                    elif category == "github-token":
+                        child_errors, child_warnings = GithubTokenCredential.validate(cinfo)
                     elif category == "personal-api-token":
                         child_errors, child_warnings = PersonalApiTokenCredential.validate(cinfo)
                     elif category == "public-key":
