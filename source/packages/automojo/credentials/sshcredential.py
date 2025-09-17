@@ -27,7 +27,7 @@ class SshCredential(BaseCredential):
 
         .. code:: yaml
             "identifier": "straw-node"
-            "scheme": "ssh"
+            "catagories": "ssh"
             "username": "ubuntu"
             "password": "@@&_@@&_LetMeComeIn"
             "keyfile": "~/.ssh/id_blah_rsa"
