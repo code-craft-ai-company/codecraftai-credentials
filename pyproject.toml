@@ -17,7 +17,7 @@ packages = [{include="automojo", from="source/packages"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-automojo-xmodules = { git = "https://github.com/automationmojo/automojo-xmodules.git", branch = "main" }
+automojo-this-app = { git = "https://github.com/automationmojo/automojo-this-app.git", branch = "main" }
 automojo-configuration = { git = "https://github.com/automationmojo/automojo-configuration.git", branch = "main" }
 automojo-testbase = { git = "https://github.com/automationmojo/automojo-testbase.git", branch = "main" }
 

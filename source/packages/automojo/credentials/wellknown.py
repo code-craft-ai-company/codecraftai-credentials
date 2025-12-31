@@ -14,8 +14,9 @@ __credits__ = []
 
 from threading import RLock
 
-from automojo.xmodules.xcollections.wellknown import ContextSingleton
-from automojo.presence.contextpaths import ContextPaths
+from automojo.thisapp.contextpaths import ContextPaths
+from automojo.thisapp.wellknown import ThisApplicationSingleton
+
 from automojo.configuration.configurationmaps import CONFIGURATION_MAPS
 
 from automojo.credentials.credentialmanager import CredentialManager
@@ -37,13 +38,15 @@ def CredentialManagerSingleton() -> CredentialManager:
         try:
 
             if CREDENTIAL_MANAGER_SINGLETON is None:
+
+                this_app = ThisApplicationSingleton()
+
                 credential_info = {}
                 if CONFIGURATION_MAPS.CREDENTIAL_CONFIGURATION_MAP is not None and \
                     len(CONFIGURATION_MAPS.CREDENTIAL_CONFIGURATION_MAP) > 0:
                     credential_info = CONFIGURATION_MAPS.CREDENTIAL_CONFIGURATION_MAP
 
-                ctx = ContextSingleton()
-                credential_uris = ctx.lookup(ContextPaths.CONFIG_CREDENTIAL_URIS, [])
+                credential_uris = this_app.context.lookup(ContextPaths.CONFIG_CREDENTIAL_URIS, [])
 
                 credmgr = CredentialManager()
                 credmgr.load_credentials(credential_info, source_uris=credential_uris)
