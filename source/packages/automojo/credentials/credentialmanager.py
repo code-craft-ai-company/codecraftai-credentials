@@ -22,6 +22,7 @@ from automojo.errors.exceptions import ConfigurationError
 from automojo.credentials.apitokencredential import ApiTokenCredential
 from automojo.credentials.awsaccesskeycredential import AwsAccessKeyCredential
 from automojo.credentials.azureclientsecretcredential import AzureClientSecretCredential
+from automojo.credentials.basecredential import BaseCredential
 from automojo.credentials.basiccredential import BasicCredential
 from automojo.credentials.githubappcredential import GithubAppCredential
 from automojo.credentials.githubtokencredential import GithubTokenCredential
@@ -94,6 +95,37 @@ class CredentialManager:
         cred = self._credentials[credkey]
         
         return cred
+    
+    def lookup_multiple_credential(self, credential_keys: List[str]) -> List[BaseCredential]:
+        """
+            Lookup a list of credentials by key and return a dictionary of credential names to
+            credentails.
+        """
+        
+        cred_table = {}
+
+        for credkey in credential_keys:
+            if credkey not in self._credentials:
+
+                errmsg_lines = [
+                    f"Error missing credential '{credkey}'."
+                ]
+            
+                if len(self._source_uris) > 0:
+                    errmsg_lines.append("CREDENTIAL URIS:")
+
+                    for cfile in self._source_uris:
+                        errmsg_lines.append(f"    {cfile}")
+
+                errmsg = os.linesep.join(errmsg_lines)
+
+                raise ConfigurationError(errmsg)
+            
+            cred = self._credentials[credkey]
+
+            cred_table[credkey] = cred
+        
+        return cred_table
 
     def load_credentials(self, credential_info: dict, source_uris: Optional[List[str]] = None):
         """
