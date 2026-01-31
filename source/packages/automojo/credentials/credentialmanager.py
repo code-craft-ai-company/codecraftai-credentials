@@ -96,7 +96,7 @@ class CredentialManager:
         
         return cred
     
-    def lookup_multiple_credentials(self, credential_keys: List[str]) -> List[BaseCredential]:
+    def lookup_multiple_credentials(self, credential_keys: List[str]) -> Dict[str, BaseCredential]:
         """
             Lookup a list of credentials by key and return a dictionary of credential names to
             credentails.
