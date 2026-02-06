@@ -190,10 +190,13 @@ class CredentialManager:
 
                             if "username" in credential and "password" in credential:
 
-                                username = credential["username"]
-                                password = credential["password"]
+                                if "ssh" in categories:
+                                    credobj = SshCredential(**credential)
+                                else:
+                                    username = credential["username"]
+                                    password = credential["password"]
 
-                                credobj = BasicCredential(identifier=ident, categories=categories, username=username, password=password)
+                                    credobj = BasicCredential(identifier=ident, categories=categories, username=username, password=password)
                                 
                                 self._credentials[ident] = credobj
                             
