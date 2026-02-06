@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import os
 
@@ -72,6 +72,51 @@ class BasicCredential(BaseCredential):
             :returns: The username string.
         """
         return self._username
+
+    @property
+    def allow_agent(self) -> bool:
+        """
+            Indicates if the SSH agent is allowed for authentication.
+
+            :returns: True if the SSH agent can be used.
+        """
+        return False
+
+    @property
+    def keyfile(self) -> Union[str, None]:
+        """
+            Gets the path to the private key file used for authentication.
+
+            :returns: Path to the key file or ``None`` if not specified.
+        """
+        return None
+
+    @property
+    def keyraw(self) -> Union[str, None]:
+        """
+            Gets the raw private key data used for authentication.
+
+            :returns: Raw key data or ``None`` if not specified.
+        """
+        return None
+
+    @property
+    def keypasswd(self) -> Union[str, None]:
+        """
+            Returns the password used to decrypt the private key file if required.
+
+            :returns: Key password or ``None`` if not specified.
+        """
+        return None
+
+    @property
+    def primitive(self) -> bool:
+        """
+            Indicates if primitive SSH operations should be used for file transfers.
+
+            :returns: ``True`` if primitive mode is enabled.
+        """
+        return False
 
     @classmethod
     def validate(cls, cred_info) -> Tuple[List[str], List[str]]:
