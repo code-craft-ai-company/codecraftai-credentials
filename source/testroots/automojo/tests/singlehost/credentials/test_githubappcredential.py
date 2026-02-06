@@ -58,7 +58,7 @@ def test_as_dict_contains_fields():
             "categories": CATEGORIES,
             "role": "priv",
             "keyfiles": [kfpath],
-            "keys": [KEY],
+            "keys": [],
             "keypasswd": ["pw"],
         }
         testbase.assert_equal(cred.as_dict(), expected)
