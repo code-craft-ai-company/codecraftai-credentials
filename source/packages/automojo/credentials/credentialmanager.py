@@ -180,7 +180,7 @@ class CredentialManager:
 
 
                         # If the credential has more than one category, we create a simple `BasicCredential` which has a common set of
-                        # attributes.  The only credential we support with common attributes is a simple 'username' and 'password' credetial 
+                        # attributes.  The only credential we support with common attributes is a simple 'username' and 'password' credential
                         if len(categories) > 1:
 
                             for category in categories:
@@ -190,18 +190,15 @@ class CredentialManager:
 
                             if "username" in credential and "password" in credential:
 
-                                if "ssh" in categories:
-                                    credobj = SshCredential(**credential)
-                                else:
-                                    username = credential["username"]
-                                    password = credential["password"]
+                                username = credential["username"]
+                                password = credential["password"]
 
-                                    credobj = BasicCredential(identifier=ident, categories=categories, username=username, password=password)
-                                
+                                credobj = BasicCredential(identifier=ident, categories=categories, username=username, password=password)
+
                                 self._credentials[ident] = credobj
                             
                             else:
-                                errmsg = "Multi category credentials must have common attributes. Currently, the only common credential supporte is a 'username' and 'password' credential."
+                                errmsg = "Multi category credentials must have common attributes. Currently, the only common credential supported is a 'username' and 'password' credential."
                                 raise ConfigurationError(errmsg)
 
                         else:
@@ -309,7 +306,7 @@ class CredentialManager:
             if "category" in cinfo or "categories" in cinfo:
 
                 if 'category' in cinfo and 'categories' in cinfo:
-                    errmsg = "A credetial should not have both a 'category' and 'categories' field.  The newest method is to just use a 'catagories' field."
+                    errmsg = "A credential should not have both a 'category' and 'categories' field.  The newest method is to just use a 'categories' field."
                     raise ConfigurationError(errmsg)
 
                 categories = None
@@ -334,7 +331,7 @@ class CredentialManager:
                             raise ConfigurationError(errmsg)
                     
                     if "username" not in cinfo or "password" not in cinfo:
-                        errmsg = "Multi category credentials must have common attributes. Currently, the only common credential supporte is a 'username' and 'password' credential."
+                        errmsg = "Multi category credentials must have common attributes. Currently, the only common credential supported is a 'username' and 'password' credential."
                         raise ConfigurationError(errmsg)
 
                 else:
