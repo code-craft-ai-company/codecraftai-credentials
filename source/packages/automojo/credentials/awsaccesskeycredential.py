@@ -87,10 +87,10 @@ class AwsAccessKeyCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "keyid" not in cred_info:
+        if "keyid" not in cred_info or cred_info["keyid"] is None:
             errors.append("missing 'keyid' in aws access key credential.")
 
-        if "secret" not in cred_info:
+        if "secret" not in cred_info or cred_info["secret"] is None:
             errors.append("missing 'secret' in aws access key credential.")
 
         return errors, warnings

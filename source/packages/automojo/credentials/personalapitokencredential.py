@@ -83,10 +83,10 @@ class PersonalApiTokenCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "username" not in cred_info:
+        if "username" not in cred_info or cred_info["username"] is None:
             errors.append("missing 'username' in personal api token credential.")
 
-        if "token" not in cred_info:
+        if "token" not in cred_info or cred_info["token"] is None:
             errors.append("missing 'token' in personal api token credential.")
 
         return errors, warnings

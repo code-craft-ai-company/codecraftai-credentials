@@ -292,7 +292,7 @@ class CredentialManager:
         identifier_set = set()
 
         for cinfo in cred_list:
-            if "identifier" in cinfo:
+            if "identifier" in cinfo and cinfo["identifier"] is not None:
                 identifier = cinfo["identifier"]
                 if identifier in identifier_set:
                     errmsg = f"Duplicate identifer found. identifier={identifier}"

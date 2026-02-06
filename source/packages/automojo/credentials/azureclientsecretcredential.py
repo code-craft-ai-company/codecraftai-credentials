@@ -94,13 +94,13 @@ class AzureClientSecretCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "client_id" not in cred_info:
+        if "client_id" not in cred_info or cred_info["client_id"] is None:
             errors.append("missing 'client_id' in azure-client-secret credential.")
 
-        if "client_secret" not in cred_info:
+        if "client_secret" not in cred_info or cred_info["client_secret"] is None:
             errors.append("missing 'client_secret' in azure-client-secret credential.")
 
-        if "tenant_id" not in cred_info:
+        if "tenant_id" not in cred_info or cred_info["tenant_id"] is None:
             errors.append("missing 'tenant_id' in azure-client-secret credential.")
 
         return errors, warnings

@@ -156,10 +156,10 @@ class SshCredential(BaseCredential):
         if "allow_agent" in cred_info:
             allow_agent = cred_info["allow_agent"]
 
-        if "identifier" not in cred_info:
+        if "identifier" not in cred_info or cred_info["identifier"] is None:
             errors.append("missing 'identifier' parameter")
 
-        if "username" not in cred_info:
+        if "username" not in cred_info or cred_info["username"] is None:
             errors.append("missing 'username' parameter")
 
         if "password" not in cred_info:

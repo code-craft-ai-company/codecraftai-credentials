@@ -85,10 +85,10 @@ class SecretTokenCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "endpoint" not in cred_info:
+        if "endpoint" not in cred_info or cred_info["endpoint"] is None:
             errors.append("missing 'endpoint' in secret token credential.")
 
-        if "token" not in cred_info:
+        if "token" not in cred_info or cred_info["token"] is None:
             errors.append("missing 'token' in secret token credential.")
 
         return errors, warnings

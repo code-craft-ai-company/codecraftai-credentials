@@ -131,10 +131,10 @@ class BasicCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "password" not in cred_info:
+        if "password" not in cred_info or cred_info["password"] is None:
             errors.append("missing 'password' in basic credential.")
 
-        if "username" not in cred_info:
+        if "username" not in cred_info or cred_info["username"] is None:
             errors.append("missing 'username' in basic credential.")
 
         return errors, warnings

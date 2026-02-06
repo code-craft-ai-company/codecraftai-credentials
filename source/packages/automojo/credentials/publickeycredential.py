@@ -86,10 +86,10 @@ class PublicKeyCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "public" not in cred_info:
+        if "public" not in cred_info or cred_info["public"] is None:
             errors.append("missing 'public' in a public key credential.")
 
-        if "private" not in cred_info:
+        if "private" not in cred_info or cred_info["private"] is None:
             errors.append("missing 'private' in a public key credential.")
 
         return errors, warnings

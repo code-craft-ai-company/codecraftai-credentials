@@ -88,7 +88,7 @@ class GithubTokenCredential(BaseCredential):
         errors: List[str] = []
         warnings: List[str] = []
 
-        if "token" not in cred_info:
+        if "token" not in cred_info or cred_info["token"] is None:
             errors.append("missing 'token' in github token credential.")
 
         return errors, warnings

@@ -72,7 +72,7 @@ class ApiTokenCredential(BaseCredential):
         errors = []
         warnings = []
 
-        if "token" not in cred_info:
+        if "token" not in cred_info or cred_info["token"] is None:
             errors.append("missing 'token' in api token credential.")
 
         return errors, warnings
