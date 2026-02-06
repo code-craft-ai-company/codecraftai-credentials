@@ -1,20 +1,7 @@
 
 import unittest
-from unittest.mock import MagicMock
 import sys
 import os
-
-# Add source/packages to python path
-sys.path.append(os.path.abspath("source/packages"))
-
-# Mock dependencies if they are missing
-if "automojo.errors.exceptions" not in sys.modules:
-    errors_mock = MagicMock()
-    class ConfigurationError(Exception):
-        pass
-    errors_mock.ConfigurationError = ConfigurationError
-    sys.modules["automojo.errors"] = MagicMock()
-    sys.modules["automojo.errors.exceptions"] = errors_mock
 
 from automojo.credentials.credentialmanager import CredentialManager
 from automojo.credentials.basiccredential import BasicCredential
