@@ -56,7 +56,8 @@ class GithubAppCredential(BaseCredential):
             raise ConfigurationError("The GithubAppCredential constructor requires either 'keyfiles' or 'keys' parameter be provided.")
 
         self._keyfiles = keyfiles or []
-        self._keys = list(keys) if keys else []
+        self._explicit_keys = list(keys) if keys else []
+        self._loaded_keys = []
         self._keypasswd = keypasswd
 
         if keyfiles:
@@ -67,7 +68,7 @@ class GithubAppCredential(BaseCredential):
                     raise ConfigurationError(errmsg)
                 with open(abs_kfile, "r") as rpf:
                     kdata = rpf.read()
-                self._keys.append(kdata)
+                self._loaded_keys.append(kdata)
 
         return
 
@@ -87,7 +88,7 @@ class GithubAppCredential(BaseCredential):
 
             :returns: List of private key strings.
         """
-        return self._keys
+        return self._explicit_keys + self._loaded_keys
 
     @property
     def keypasswd(self) -> Optional[List[Optional[str]]]:
@@ -153,7 +154,7 @@ class GithubAppCredential(BaseCredential):
         if len(self._keyfiles) > 0:
             rtnval["keyfiles"] = self._keyfiles
 
-        rtnval["keys"] = self._keys
+        rtnval["keys"] = self._explicit_keys
 
         if self._keypasswd is not None:
             rtnval["keypasswd"] = self._keypasswd
