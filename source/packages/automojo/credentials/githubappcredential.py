@@ -88,7 +88,8 @@ class GithubAppCredential(BaseCredential):
 
             :returns: List of private key strings.
         """
-        return self._explicit_keys + self._loaded_keys
+        rtnval = self._explicit_keys + self._loaded_keys
+        return rtnval
 
     @property
     def keypasswd(self) -> Optional[List[Optional[str]]]:
