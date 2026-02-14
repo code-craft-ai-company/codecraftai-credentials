@@ -12,21 +12,21 @@ __copyright__ = "Copyright 2025, Automation Mojo LLC"
 __credits__ = []
 
 
+from typing import List, Optional
+
 from threading import RLock
 
-from automojo.thisapp.contextpaths import ContextPaths
-from automojo.thisapp.wellknown import ThisApplicationSingleton
-
-from automojo.configuration.configurationmaps import CONFIGURATION_MAPS
+from automojo.errors.exceptions import SemanticError
 
 from automojo.credentials.credentialmanager import CredentialManager
 
 CREDENTIAL_MANAGER_SINGLETON = None
+CREDENTIAL_CONFIGURATION_MAP = None
 
 SINGLETON_LOCK = RLock()
 
 
-def CredentialManagerSingleton() -> CredentialManager:
+def CredentialManagerSingleton(credential_info: Optional[dict] = None, credential_uris: Optional[List[str]] = None) -> CredentialManager:
     """
         Instantiates and gets a global instance of the :class:`CredentialManager` class.  The
         :class:`CredentialManager` provides for management of credentials.
@@ -34,19 +34,13 @@ def CredentialManagerSingleton() -> CredentialManager:
     global CREDENTIAL_MANAGER_SINGLETON
 
     if CREDENTIAL_MANAGER_SINGLETON is None:
+
+        if credential_info is None or credential_uris is None:
+             errmsg = "The first call to create the CredentialManagerSingleton must include the credential_info and credential_uris parameters."
+             raise SemanticError(errmsg)
+
         SINGLETON_LOCK.acquire()
         try:
-
-            if CREDENTIAL_MANAGER_SINGLETON is None:
-
-                this_app = ThisApplicationSingleton()
-
-                credential_info = {}
-                if CONFIGURATION_MAPS.CREDENTIAL_CONFIGURATION_MAP is not None and \
-                    len(CONFIGURATION_MAPS.CREDENTIAL_CONFIGURATION_MAP) > 0:
-                    credential_info = CONFIGURATION_MAPS.CREDENTIAL_CONFIGURATION_MAP
-
-                credential_uris = this_app.context.lookup(ContextPaths.CONFIG_CREDENTIAL_URIS, [])
 
                 credmgr = CredentialManager()
                 credmgr.load_credentials(credential_info, source_uris=credential_uris)
