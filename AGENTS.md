@@ -12,20 +12,14 @@ AI Agents working in this repository should refer to themselves as an agent name
 
 
 # Testing Conventions
-The 'automojo-credentials' package repository utilizes the 'testbase' framework in order to run tests.  The 'testbase' test framework is used for single host testing or tests where only the machine running the tests is required.
+The 'automojo-configuration' package repository utilizes the 'unittest' framework in order to test the functionality of the code.
 
-Test are organized at the lowest level by resource configuration.  For example, all the single host tests for this package are in the folder 'source/testroots/automojo/tests/singlehost/credentials'.
+## Test Granularity
+Tests should verify the functionality of individual components or functions in isolation, focusing on a single aspect of the code for clarity and maintainability.
 
-AI based testing should run only the 'singlehost' tests tests with:
+Avoid composite tests that validate multiple components or functions in a series of assertions, as they lack proper isolation and can miss checks when an assertion fails.
 
-```
-    source .venv/bin/activate
-    
-    testbase testing run --root source/testroots/automojo --includes=automojo.tests.singlehost --output=./.output
-```
-
-When running tests you should create an output folder in order to be able to capture all the test run artifacts in an isolated folder.
-
+Use Python's `unittest` framework with `setUp` and `tearDown` methods to establish shared conditions across tests while maintaining separation of concerns.
 # Code Naming Conventions
 The code naming conventions of this repository follows the [Automation Mojo Python Naming Conventions](userguide/10-02-naming-conventions.rst)
 
@@ -69,94 +63,25 @@ The code in this repository is meant to be utilized by testing tools and test fr
 
 For all the code in this repository, follow the coding standards specified at [Coding Standards](userguide/10-00-coding-standards.rst)
 
-# Writing Tests
-
-A 'testbase' test takes the form of a function with a 'test_' prefix like so:
-
-```
-def test_something():
-    return
-```
-
-If a test raises an AssertionError, then it checked something and the check failed.  That is a Failure.  If the test raises any other exception, then the test framework treats that as an Error much like the 'unittest' framework does.
-
-You can create resource factories.
+# Running Tests
+In order to run the unittest tests, you must first enter the virtual environment by running the command:
 
 ```
-@testbase.register.resource_factory()
-def create_landscape(constraints={}) -> Generator[Landscape, None, None]:
-    """
-        Creates the global :class:`Landscape` instance.
-
-        :param constraints: Optional dictionary of constraints used while constructing the Landscape.
-
-        :returns: A generator yielding the Landscape object.
-    """
-    lscape = LandscapeSingleton()
-    yield lscape
+    source <repository-root>/.venv/bin/activate
 ```
 
-You can create resources using the factories in a scope in the test tree.  Resources have scope for every test below where they are declared.
+When you setup the environment, the '.venv/bin/activate' script is modified so that it will pull in the appropriate environment
+variables from the '.env' file.
+
+For running the 'unittest' tests located under the folder '<repository-root>/source/tests', use the command:
 
 ```
-testbase.originate.parameter(create_landscape, identifier='lscape')
+    cd <repository-root>
+
+    python -m unittest discover -s source/tests -p "test_*.py"
 ```
 
-To use a resource in a descendant test scope, just reference it by name in the test function signature like:
 
-```
-def test_use_landscape(lscape: Landscape):
-
-    blah = lscape.get_something()
-    testbase.assert_equal(blah is not None, True)
-    return
-
-```
-
-The test tree should only contain resource origination declarations and tests.  It should not contain factories unless the usage of the factory is very isolated.  It is preferable to place factories in a folder such as a factory that creates the AutomationPodSimple object might be located at 'source/testroots/automojo/testshared/factories/automationpods/automationpodsimple.py'
-
-# Evaluating Test Results
-There is a machine processable JSOS stream file in the output folder.
-
-"*outputfolder*/testrun_results_stream.jsos"
-
-JSOS (JSON Object Stream) consists of a stream of JSON objects seperated by the the ASCII record seperator character.  When a
-test starts it writes a preview to the stream.  The test preview has a 'result' equal to 'UNSET'.  Example Preview:
-
-```
-{
-    "name": "automojo.tests.singlehost.interop.protocols.dns.test_dnsaddress#test_write_passes_address",
-    "monikers": [],
-    "pivots": {},
-    "instance": "abb868e4-ce97-4bae-b0af-715da0d61d92",
-    "parent": "5aad244e-41dc-438f-97a6-bd8365cccdd2",
-    "rtype": "TEST",
-    "result": "UNSET",
-    "start": "2025-07-15T22:07:03.275239",
-    "stop": ""
-}
-```
-
-When a test finishes it writes a result to the stream.  A test result will always have a 'detail' attribute. Example Result:
-
-```
-{
-    "name": "automojo.tests.singlehost.interop.protocols.dns.test_dnsaddress#test_write_passes_address",
-    "monikers": [],
-    "pivots": {},
-    "instance": "abb868e4-ce97-4bae-b0af-715da0d61d92",
-    "parent": "5aad244e-41dc-438f-97a6-bd8365cccdd2",
-    "rtype": "TEST",
-    "result": "PASSED",
-    "start": "2025-07-15T22:07:03.275239",
-    "stop": "2025-07-15T22:07:03.276034",
-    "detail": {
-        "errors": [],
-        "failures": [],
-        "warnings": []
-    }
-}
-```
 
 # Environment Setup
 
