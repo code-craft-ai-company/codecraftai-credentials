@@ -21,7 +21,6 @@ from automojo.errors.exceptions import SemanticError
 from automojo.credentials.credentialmanager import CredentialManager
 
 CREDENTIAL_MANAGER_SINGLETON = None
-CREDENTIAL_CONFIGURATION_MAP = None
 
 SINGLETON_LOCK = RLock()
 
