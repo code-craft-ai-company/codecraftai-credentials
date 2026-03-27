@@ -103,3 +103,12 @@ When checking out the code for this repository in order to test changes, agents 
 
 # Packaging
 Currently, this package is utilized using a reference to the github repository.  It is currently not published.
+
+
+# Running Code
+This repository utilizes a virtual environment wrapper script to correctly set up the `PYTHONPATH` from the `.env` file and execute Python code.
+
+- **Linux / macOS:** Use `.venv/bin/python-env <script.py>`
+- **Windows:** Use `.venv/bin/python-env.ps1 <script.py>`
+
+Do not activate the virtual environment manually or use the global Python interpreter. Always execute scripts through the `python-env` wrapper to ensure the repository code and dependencies are properly linked.
