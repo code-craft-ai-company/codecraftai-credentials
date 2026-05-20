@@ -30,6 +30,9 @@ from automojo.credentials.personalapitokencredential import PersonalApiTokenCred
 from automojo.credentials.publickeycredential import PublicKeyCredential
 from automojo.credentials.secrettokencredential import SecretTokenCredential
 from automojo.credentials.sshcredential import SshCredential
+from automojo.credentials.tailscaleauthkeycredential import TailscaleAuthKeyCredential
+from automojo.credentials.tailscaleoauthcredential import TailscaleOAuthCredential
+from automojo.credentials.twingateserviceaccountcredential import TwingateServiceAccountCredential
 from automojo.credentials.wifichoicecredential import WifiChoiceCredential
 
 logger = logging.getLogger()
@@ -126,6 +129,29 @@ class CredentialManager:
             cred_table[credkey] = cred
         
         return cred_table
+
+    def get_credentials_by_categories(self, *, categories: List[str]) -> List[BaseCredential]:
+        """
+            Returns the list of loaded credentials whose declared categories intersect the
+            requested category list.
+
+            :param categories: The list of categories to filter the loaded credentials against.
+
+            :returns: The list of matching :class:`BaseCredential` instances (possibly empty).
+        """
+
+        category_set = set(categories)
+
+        matches = []
+
+        for cred in self._credentials.values():
+            cred_categories = set(cred.categories)
+            intersection = category_set & cred_categories
+            if len(intersection) > 0:
+                matches.append(cred)
+
+        rtnval = matches
+        return rtnval
 
     def load_credentials(self, credential_info: dict, source_uris: Optional[List[str]] = None):
         """
@@ -244,6 +270,18 @@ class CredentialManager:
                                 credobj = SshCredential(**credential)
                                 self._credentials[ident] = credobj
 
+                            elif category == "tailscale-authkey":
+                                credobj = TailscaleAuthKeyCredential(**credential)
+                                self._credentials[ident] = credobj
+
+                            elif category == "tailscale-oauth":
+                                credobj = TailscaleOAuthCredential(**credential)
+                                self._credentials[ident] = credobj
+
+                            elif category == "twingate-service-account":
+                                credobj = TwingateServiceAccountCredential(**credential)
+                                self._credentials[ident] = credobj
+
                             elif category == "wifi-choice":
                                 credobj = WifiChoiceCredential(**credential)
                                 self._credentials[ident] = credobj
@@ -357,6 +395,12 @@ class CredentialManager:
                         child_errors, child_warnings = PublicKeyCredential.validate(cinfo)
                     elif category == "secret-token":
                         child_errors, child_warnings = SecretTokenCredential.validate(cinfo)
+                    elif category == "tailscale-authkey":
+                        child_errors, child_warnings = TailscaleAuthKeyCredential.validate(cinfo)
+                    elif category == "tailscale-oauth":
+                        child_errors, child_warnings = TailscaleOAuthCredential.validate(cinfo)
+                    elif category == "twingate-service-account":
+                        child_errors, child_warnings = TwingateServiceAccountCredential.validate(cinfo)
                     elif category == "wifi-choice":
                         child_errors, child_warnings = WifiChoiceCredential.validate(cinfo)
                     else:

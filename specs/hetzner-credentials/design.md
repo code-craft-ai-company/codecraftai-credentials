@@ -1,0 +1,88 @@
+# Design
+
+## Overview
+
+`HetznerApiTokenCredential` is a thin `BaseCredential` subclass wrapping a Hetzner
+Cloud API token.  The Hetzner venue provisioner consumes it via the `cloud-venue`
+category filter.
+
+See Also:
+- `automojo-provisioning/specs/venue-hetzner/design.md`
+- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+
+---
+
+## Architecture
+
+```
+┌──────────────────────────────────────────────────────────┐
+│        automojo-provisioning venue-hetzner               │
+│   resolves credential by identifier and uses .token      │
+└────────────────────────────┬─────────────────────────────┘
+                             ▼
+                    CredentialManager
+                             │
+                             ▼
+        ┌─────────────────────────────────────────┐
+        │     HetznerApiTokenCredential           │
+        │     identifier / categories / token     │
+        └─────────────────────────────────────────┘
+                             │
+                             ▼
+                       BaseCredential
+```
+
+---
+
+## Data Model
+
+```python
+class HetznerApiTokenCredential(BaseCredential):
+
+    def __init__(
+        self,
+        *,
+        identifier: str,
+        categories: List[str],
+        token: str,
+        role: Optional[str] = "priv",
+    ) -> None: ...
+
+    @property
+    def token(self) -> str: ...
+
+    @classmethod
+    def validate(cls, cred_info: Dict[str, Any]) -> Tuple[List[str], List[str]]: ...
+
+    def as_dict(self) -> Dict[str, Any]: ...
+```
+
+Required category: `"cloud-venue"`.
+
+---
+
+## Module Layout
+
+```
+source/packages/automojo/credentials/
+├── hetznerapitokencredential.py
+└── wellknown.py
+
+source/testroots/testbase/automojo/tests/credentials/
+├── test_hetznerapitokencredential.py
+└── test_hetzner_credentials_properties.py
+```
+
+---
+
+## Testing Strategy
+
+Example-based tests cover: successful construction; `ConfigurationError` when
+`categories` lacks `"cloud-venue"`; `ConfigurationError` on empty `token`;
+`validate()` missing-field reporting; `as_dict()` completeness.
+
+Property test (`hypothesis`):
+
+- `test_hetzner_token_roundtrip` — generates arbitrary non-empty token strings,
+  constructs a credential, serialises via `as_dict()`, reconstructs, and asserts
+  field-wise equality.
