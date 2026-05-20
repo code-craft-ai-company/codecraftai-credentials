@@ -61,11 +61,16 @@ WELL_KNOWN_CATEGORY_MEMBERSHIP: Dict[str, List[str]] = {
         "gcp-service-account-key",
         "gcp-workload-identity",
         "oracle-api-key",
+        "crusoe-api-key",
     ],
     CATEGORY_VM_VENUE: [
         "vsphere-basic",
     ],
-    CATEGORY_HPC_VENUE: [],
+    CATEGORY_HPC_VENUE: [
+        "lambdalabs-api-key",
+        "crusoe-api-key",
+        "nebius-service-account",
+    ],
 }
 
 
