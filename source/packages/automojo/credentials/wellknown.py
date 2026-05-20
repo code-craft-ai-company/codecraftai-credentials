@@ -62,7 +62,9 @@ WELL_KNOWN_CATEGORY_MEMBERSHIP: Dict[str, List[str]] = {
         "gcp-workload-identity",
         "oracle-api-key",
     ],
-    CATEGORY_VM_VENUE: [],
+    CATEGORY_VM_VENUE: [
+        "vsphere-basic",
+    ],
     CATEGORY_HPC_VENUE: [],
 }
 
