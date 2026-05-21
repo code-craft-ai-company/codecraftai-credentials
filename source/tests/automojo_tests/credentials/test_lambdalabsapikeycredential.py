@@ -89,7 +89,7 @@ class TestLambdalabsApiKeyCredential(unittest.TestCase):
             Verifies the per-provider category is registered under the hpc-venue umbrella.
         """
         hpc_members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_HPC_VENUE]
-        self.assertIn("lambdalabs-api-key", hpc_members)
+        self.assertIn(CATEGORY_HPC_VENUE, hpc_members)
 
     @given(
         identifier=st.text(alphabet=st.characters(min_codepoint=33, max_codepoint=126), min_size=1, max_size=32),

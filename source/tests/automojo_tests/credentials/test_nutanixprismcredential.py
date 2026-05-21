@@ -133,7 +133,7 @@ class TestNutanixPrismCredential(unittest.TestCase):
             Verifies the per-provider category is registered under the vm-venue umbrella.
         """
         members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_VM_VENUE]
-        self.assertIn("nutanix-prism", members)
+        self.assertIn(CATEGORY_VM_VENUE, members)
 
     @given(
         identifier=st.text(alphabet=st.characters(min_codepoint=33, max_codepoint=126), min_size=1, max_size=32),

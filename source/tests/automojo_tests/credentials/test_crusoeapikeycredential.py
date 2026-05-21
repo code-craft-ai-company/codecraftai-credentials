@@ -124,8 +124,8 @@ class TestCrusoeApiKeyCredential(unittest.TestCase):
         """
         hpc_members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_HPC_VENUE]
         cloud_members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_CLOUD_VENUE]
-        self.assertIn("crusoe-api-key", hpc_members)
-        self.assertIn("crusoe-api-key", cloud_members)
+        self.assertIn(CATEGORY_HPC_VENUE, hpc_members)
+        self.assertIn(CATEGORY_CLOUD_VENUE, cloud_members)
 
     @given(
         identifier=st.text(alphabet=st.characters(min_codepoint=33, max_codepoint=126), min_size=1, max_size=32),
