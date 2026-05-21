@@ -94,7 +94,7 @@ class TestAzureManagedIdentityCredential(unittest.TestCase):
             Verifies the per-provider category is registered under the cloud-venue umbrella.
         """
         cloud_members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_CLOUD_VENUE]
-        self.assertIn("azure-managed-identity", cloud_members)
+        self.assertIn(CATEGORY_CLOUD_VENUE, cloud_members)
 
     def test_as_dict_contains_fields(self):
         """

@@ -95,7 +95,7 @@ class TestGcpWorkloadIdentityCredential(unittest.TestCase):
             Verifies the per-provider category is registered under the cloud-venue umbrella.
         """
         cloud_members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_CLOUD_VENUE]
-        self.assertIn("gcp-workload-identity", cloud_members)
+        self.assertIn(CATEGORY_CLOUD_VENUE, cloud_members)
 
     @given(
         identifier=st.text(alphabet=st.characters(min_codepoint=33, max_codepoint=126), min_size=1, max_size=32),

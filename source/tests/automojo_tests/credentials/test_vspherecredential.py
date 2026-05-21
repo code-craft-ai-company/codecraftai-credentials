@@ -168,7 +168,7 @@ class TestVSphereCredential(unittest.TestCase):
             vm-venue umbrella.
         """
         vm_members = WELL_KNOWN_CATEGORY_MEMBERSHIP[CATEGORY_VM_VENUE]
-        self.assertIn("vsphere-basic", vm_members)
+        self.assertIn(CATEGORY_VM_VENUE, vm_members)
 
 
 if __name__ == "__main__":

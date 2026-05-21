@@ -54,31 +54,23 @@ WELL_KNOWN_CATEGORY_MEMBERSHIP: Dict[str, List[str]] = {
         "tailscale-oauth",
         "twingate-service-account",
     ],
+    # The venue credential classes declare the umbrella category itself
+    # (``cloud-venue`` / ``vm-venue`` / ``hpc-venue``) rather than a
+    # per-provider string, so the umbrella entries must resolve to the
+    # umbrella category. The two legacy cloud credential classes
+    # (``AwsAccessKeyCredential``, ``AzureClientSecretCredential``) predate
+    # that convention and declare per-provider strings, so those remain in
+    # the cloud-venue membership list for backward compatibility.
     CATEGORY_CLOUD_VENUE: [
+        CATEGORY_CLOUD_VENUE,
         "aws-access-key",
-        "azure-service-principal",
-        "azure-managed-identity",
-        "gcp-service-account-key",
-        "gcp-workload-identity",
-        "oracle-api-key",
-        "crusoe-api-key",
-        "digitalocean-api-token",
-        "hetzner-api-token",
-        "linode-api-token",
-        "equinix-metal-api-token",
-        "vultr-api-key",
+        "azure-client-secret",
     ],
     CATEGORY_VM_VENUE: [
-        "vsphere-basic",
-        "proxmox-api-token",
-        "nutanix-prism",
+        CATEGORY_VM_VENUE,
     ],
     CATEGORY_HPC_VENUE: [
-        "lambdalabs-api-key",
-        "crusoe-api-key",
-        "nebius-service-account",
-        "coreweave-api-token",
-        "runpod-api-key",
+        CATEGORY_HPC_VENUE,
     ],
 }
 

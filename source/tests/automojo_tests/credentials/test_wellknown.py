@@ -148,3 +148,25 @@ class TestGetCredentialsByCategory(unittest.TestCase):
         matches = get_credentials_by_category(category="tailscale-oauth")
         identifiers = sorted(cred.identifier for cred in matches)
         self.assertEqual(identifiers, ["ts-oauth"])
+
+    def test_umbrella_expansion_matches_umbrella_declaring_credential(self):
+        """
+            Verifies the cloud-venue umbrella resolves credentials that
+            declare the umbrella category itself (the convention used by the
+            venue credential classes), not only the legacy per-provider
+            strings. This is the F-H4 regression guard.
+        """
+        from automojo.credentials.digitaloceanapitokencredential import (
+            DigitalOceanApiTokenCredential,
+        )
+
+        credmgr = CredentialManagerSingleton(credential_info=CREDENTIAL_INFO,
+                                             credential_uris=["test"])
+        do_cred = DigitalOceanApiTokenCredential(
+            identifier="do-cred", categories=["cloud-venue"],
+            token="do-token-XXXX")
+        credmgr._credentials["do-cred"] = do_cred
+
+        matches = get_credentials_by_category(category=CATEGORY_CLOUD_VENUE)
+        identifiers = sorted(cred.identifier for cred in matches)
+        self.assertEqual(identifiers, ["aws-cred", "do-cred"])
