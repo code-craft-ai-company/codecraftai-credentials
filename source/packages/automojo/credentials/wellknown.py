@@ -62,14 +62,23 @@ WELL_KNOWN_CATEGORY_MEMBERSHIP: Dict[str, List[str]] = {
         "gcp-workload-identity",
         "oracle-api-key",
         "crusoe-api-key",
+        "digitalocean-api-token",
+        "hetzner-api-token",
+        "linode-api-token",
+        "equinix-metal-api-token",
+        "vultr-api-key",
     ],
     CATEGORY_VM_VENUE: [
         "vsphere-basic",
+        "proxmox-api-token",
+        "nutanix-prism",
     ],
     CATEGORY_HPC_VENUE: [
         "lambdalabs-api-key",
         "crusoe-api-key",
         "nebius-service-account",
+        "coreweave-api-token",
+        "runpod-api-key",
     ],
 }
 
