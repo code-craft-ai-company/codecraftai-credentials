@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `vultr-credentials` feature adds a `VultrApiKeyCredential` class to `automojo-credentials`.
+The `vultr-credentials` feature adds a `VultrApiKeyCredential` class to `codecraftai-credentials`.
 The class wraps the authentication material used by the vultr venue provisioner
 (`venues/vultr/`) against the Vultr REST API.
 
@@ -10,7 +10,7 @@ It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-vultr`](../../../automojo-provisioning/specs/venue-vultr/requirements.md).
+[`venue-vultr`](../../../codecraftai-provisioning/specs/venue-vultr/requirements.md).
 
 ---
 

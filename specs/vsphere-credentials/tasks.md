@@ -16,5 +16,5 @@
 - [x] 8. Add a `hypothesis` property test `test_vsphere_credential_roundtrip`
       asserting serialise → reconstruct equality.
 - [x] 9. Cross-link this spec from
-      `automojo-provisioning/specs/venue-vsphere/design.md` and from
-      `automojo-interop-vsphere/specs/vsphere-client-rest-base/design.md`.
+      `codecraftai-provisioning/specs/venue-vsphere/design.md` and from
+      `codecraftai-interop-vsphere/specs/vsphere-client-rest-base/design.md`.

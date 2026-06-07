@@ -22,5 +22,5 @@
 - [x] 10. Add `hypothesis` property tests `test_service_principal_roundtrip` and
        `test_managed_identity_roundtrip` asserting serialise → reconstruct equality
        over arbitrary valid field combinations.
-- [x] 11. Cross-link this spec from `automojo-provisioning/specs/venue-azure/design.md`
+- [x] 11. Cross-link this spec from `codecraftai-provisioning/specs/venue-azure/design.md`
        under its See Also section.

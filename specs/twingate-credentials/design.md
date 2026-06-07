@@ -3,7 +3,7 @@
 ## Overview
 
 `TwingateServiceAccountCredential` is added under
-`automojo-credentials/source/packages/automojo/credentials/twingateserviceaccountcredential.py`.
+`codecraftai-credentials/source/packages/ccai/credentials/twingateserviceaccountcredential.py`.
 It follows the `AwsAccessKeyCredential` / `TailscaleAuthKeyCredential`
 pattern: keyword-only constructor with
 `ConfigurationError`-based validation, typed read-only properties, a
@@ -16,7 +16,7 @@ sibling `TwingateOAuthCredential`. Connector tokens are issued
 through the control-plane API itself and are not credentials.
 
 **See Also:** [tailscale-credentials](../tailscale-credentials/design.md),
-[vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md),
+[vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md),
 [well-known-vpn-and-venue-categories](../well-known-vpn-and-venue-categories/design.md).
 
 ---
@@ -45,7 +45,7 @@ through the control-plane API itself and are not credentials.
                  v
 +---------------------------------+
 | TwingateControlPlane            |
-|  (automojo-interop/vpn/twingate)|
+|  (codecraftai-interop/vpn/twingate)|
 |  GraphQL on /api/graphql/       |
 +---------------------------------+
 ```
@@ -119,7 +119,7 @@ class TwingateServiceAccountCredential(BaseCredential):
 ## Module Layout
 
 ```
-automojo-credentials/source/packages/automojo/credentials/
+codecraftai-credentials/source/packages/ccai/credentials/
   twingateserviceaccountcredential.py
   wellknown.py            (extended — see sibling spec)
   basecredential.py       (existing)
@@ -131,7 +131,7 @@ automojo-credentials/source/packages/automojo/credentials/
 
 - [tailscale-credentials](../tailscale-credentials/design.md) — peer
   credential classes for the other supported provider.
-- [vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md)
+- [vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md)
   — `TwingateControlPlane` consumes this credential.
 - [well-known-vpn-and-venue-categories](../well-known-vpn-and-venue-categories/design.md).
 

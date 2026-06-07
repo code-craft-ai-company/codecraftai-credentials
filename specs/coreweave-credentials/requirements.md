@@ -3,10 +3,10 @@
 ## Introduction
 
 The `coreweave-credentials` feature adds a `CoreweaveApiCredential` class to
-`automojo-credentials`.  Per the §7 decision in
+`codecraftai-credentials`.  Per the §7 decision in
 `PLAN-VPN-AND-CLOUD-PROVISIONING.md`, this credential is a CoreWeave-issued API
 token that the CoreWeave interop client exchanges for a Kubernetes `kubeconfig` at
-use time; the resulting kubeconfig is handed to `automojo-interop-kubernetes` and
+use time; the resulting kubeconfig is handed to `codecraftai-interop-kubernetes` and
 no double-auth occurs.
 
 The class inherits from `BaseCredential` and follows the patterns in
@@ -15,7 +15,7 @@ venue used primarily for HPC/AI workloads, the credential is registered under th
 `hpc-venue` category (and not `cloud-venue`).
 
 See Also:
-[`venue-coreweave`](../../../automojo-provisioning/specs/venue-coreweave/requirements.md).
+[`venue-coreweave`](../../../codecraftai-provisioning/specs/venue-coreweave/requirements.md).
 
 ---
 

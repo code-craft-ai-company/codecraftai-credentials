@@ -7,8 +7,8 @@ Crusoe Cloud API credential (`access_key_id`, `secret`).  The Crusoe venue
 provisioner consumes it via the `cloud-venue` (or `hpc-venue`) category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-crusoe/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-crusoe/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-crusoe                  │
+│        codecraftai-provisioning venue-crusoe                  │
 │   signs api.crusoecloud.com requests with the two fields   │
 └────────────────────────────┬───────────────────────────────┘
                              ▼
@@ -68,11 +68,11 @@ At least one of `"cloud-venue"` or `"hpc-venue"` must appear in `categories`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── crusoeapikeycredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_crusoeapikeycredential.py
 └── test_crusoe_credentials_properties.py
 ```

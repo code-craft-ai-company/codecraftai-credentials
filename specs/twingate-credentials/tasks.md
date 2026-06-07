@@ -2,7 +2,7 @@
 
 ## Module and Models
 
-- [x] 1. Create `automojo-credentials/source/packages/automojo/credentials/twingateserviceaccountcredential.py`.
+- [x] 1. Create `codecraftai-credentials/source/packages/ccai/credentials/twingateserviceaccountcredential.py`.
 - [x] 2. Mirror the file/module conventions from
   `awsaccesskeycredential.py` (header, copyright, Sphinx docstring).
 

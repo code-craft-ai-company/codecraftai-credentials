@@ -3,7 +3,7 @@
 ## Introduction
 
 The `nutanix-credentials` feature adds a `NutanixPrismCredential` class to
-`automojo-credentials`.  The class wraps Nutanix Prism Central authentication —
+`codecraftai-credentials`.  The class wraps Nutanix Prism Central authentication —
 username, password, and the Prism Central endpoint URL — used by the Nutanix venue
 provisioner (`venues/nutanix/`).
 
@@ -12,7 +12,7 @@ It inherits from `BaseCredential` and follows the patterns established by
 venue, so the credential is registered under the `vm-venue` category.
 
 See Also:
-[`venue-nutanix`](../../../automojo-provisioning/specs/venue-nutanix/requirements.md).
+[`venue-nutanix`](../../../codecraftai-provisioning/specs/venue-nutanix/requirements.md).
 
 ---
 

@@ -8,9 +8,9 @@ the current pattern of overloading `BasicCredential` for VSphere with a typed
 class registered under the `vm-venue` category.
 
 See Also:
-- `automojo-provisioning/specs/venue-vsphere/design.md`
-- `automojo-interop-vsphere/specs/vsphere-client-rest-base/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/basiccredential.py`
+- `codecraftai-provisioning/specs/venue-vsphere/design.md`
+- `codecraftai-interop-vsphere/specs/vsphere-client-rest-base/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/basiccredential.py`
 
 ---
 
@@ -18,7 +18,7 @@ See Also:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│        automojo-interop-vsphere VSphereClient              │
+│        codecraftai-interop-vsphere VSphereClient              │
 │   _authenticate(...) consumes (username, password|token)   │
 └────────────────────────────┬───────────────────────────────┘
                              ▼
@@ -75,11 +75,11 @@ are set).
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── vspherecredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_vspherecredential.py
 └── test_vsphere_credentials_properties.py
 ```

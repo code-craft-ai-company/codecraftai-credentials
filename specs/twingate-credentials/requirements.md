@@ -3,7 +3,7 @@
 ## Introduction
 
 The `twingate-credentials` feature adds
-`TwingateServiceAccountCredential` to `automojo-credentials` — a typed
+`TwingateServiceAccountCredential` to `codecraftai-credentials` — a typed
 container for the Twingate API token plus the network slug needed by
 the Twingate GraphQL control plane. The class mirrors the
 `TailscaleAuthKeyCredential` pattern (subclass `BaseCredential`,
@@ -16,7 +16,7 @@ only the API-token + network-slug pair; connector tokens are issued
 through the control plane API itself at use time and are not
 credentials by themselves.
 
-**See Also:** [vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md),
+**See Also:** [vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md),
 [well-known-vpn-and-venue-categories](../well-known-vpn-and-venue-categories/design.md),
 [tailscale-credentials](../tailscale-credentials/design.md).
 

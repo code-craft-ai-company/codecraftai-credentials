@@ -21,19 +21,19 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Status**: COMPLETED
   - **Requirements**: REQ-078, REQ-079
   - **Description**: Base class with identifier, categories, role properties and as_dict() method
-  - **Files**: `source/packages/automojo/credentials/basecredential.py`
+  - **Files**: `source/packages/ccai/credentials/basecredential.py`
 
 - **TASK-002** 🟢 **Credential Manager Core**
   - **Status**: COMPLETED  
   - **Requirements**: REQ-080, REQ-081, REQ-001, REQ-002
   - **Description**: CredentialManager with load_credentials() and lookup_credential() methods
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 - **TASK-003** 🟢 **Singleton Pattern Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-085, REQ-086, REQ-087, REQ-065
   - **Description**: Thread-safe singleton with AutoMojo configuration integration
-  - **Files**: `source/packages/automojo/credentials/wellknown.py`
+  - **Files**: `source/packages/ccai/credentials/wellknown.py`
 
 ### 1.2 Validation Framework
 - **TASK-004** 🟢 **Constructor Validation**
@@ -54,7 +54,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Priority**: Medium
   - **Description**: Improve error messages with more context and field-specific details
   - **Current Gap**: Error messages could include more specific field validation context
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 ---
 
@@ -65,72 +65,72 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Status**: COMPLETED
   - **Requirements**: REQ-012, REQ-013, REQ-014
   - **Description**: Username/password credential with multi-category support
-  - **Files**: `source/packages/automojo/credentials/basiccredential.py`
+  - **Files**: `source/packages/ccai/credentials/basiccredential.py`
 
 ### 2.2 SSH Authentication  
 - **TASK-008** 🟢 **SshCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-015, REQ-016, REQ-017, REQ-018, REQ-019
   - **Description**: SSH authentication with keyfile, keyraw, password, and agent support
-  - **Files**: `source/packages/automojo/credentials/sshcredential.py`
+  - **Files**: `source/packages/ccai/credentials/sshcredential.py`
 
 ### 2.3 API Token Authentication
 - **TASK-009** 🟢 **ApiTokenCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-020, REQ-021
   - **Description**: Simple API token credential
-  - **Files**: `source/packages/automojo/credentials/apitokencredential.py`
+  - **Files**: `source/packages/ccai/credentials/apitokencredential.py`
 
 - **TASK-010** 🟢 **PersonalApiTokenCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-022, REQ-023
   - **Description**: Personal API token with username association
-  - **Files**: `source/packages/automojo/credentials/personalapitokencredential.py`
+  - **Files**: `source/packages/ccai/credentials/personalapitokencredential.py`
 
 ### 2.4 Cloud Provider Authentication
 - **TASK-011** 🟢 **AwsAccessKeyCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-024, REQ-025
   - **Description**: AWS access key and secret credential
-  - **Files**: `source/packages/automojo/credentials/awsaccesskeycredential.py`
+  - **Files**: `source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 - **TASK-012** 🟢 **AzureClientSecretCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-026, REQ-027
   - **Description**: Azure service principal credential
-  - **Files**: `source/packages/automojo/credentials/azureclientsecretcredential.py`
+  - **Files**: `source/packages/ccai/credentials/azureclientsecretcredential.py`
 
 ### 2.5 GitHub Authentication
 - **TASK-013** 🟢 **GithubTokenCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-028, REQ-029
   - **Description**: GitHub personal access token credential
-  - **Files**: `source/packages/automojo/credentials/githubtokencredential.py`
+  - **Files**: `source/packages/ccai/credentials/githubtokencredential.py`
 
 - **TASK-014** 🟢 **GithubAppCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-030, REQ-031, REQ-032, REQ-033
   - **Description**: GitHub application credential with private key support
-  - **Files**: `source/packages/automojo/credentials/githubappcredential.py`
+  - **Files**: `source/packages/ccai/credentials/githubappcredential.py`
 
 ### 2.6 Specialized Authentication
 - **TASK-015** 🟢 **PublicKeyCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-034, REQ-035
   - **Description**: Public/private key pair credential
-  - **Files**: `source/packages/automojo/credentials/publickeycredential.py`
+  - **Files**: `source/packages/ccai/credentials/publickeycredential.py`
 
 - **TASK-016** 🟢 **SecretTokenCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-036, REQ-037
   - **Description**: Secret token with endpoint association
-  - **Files**: `source/packages/automojo/credentials/secrettokencredential.py`
+  - **Files**: `source/packages/ccai/credentials/secrettokencredential.py`
 
 - **TASK-017** 🟢 **WifiChoiceCredential Implementation**
   - **Status**: COMPLETED
   - **Requirements**: REQ-038, REQ-039
   - **Description**: WiFi network credentials with multiple network support
-  - **Files**: `source/packages/automojo/credentials/wifichoicecredential.py`
+  - **Files**: `source/packages/ccai/credentials/wifichoicecredential.py`
 
 ---
 
@@ -141,7 +141,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Status**: COMPLETED
   - **Requirements**: REQ-040, REQ-041, REQ-042
   - **Description**: Support for credentials with multiple compatible categories
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 - **TASK-019** 🟡 **Category Validation Enhancement**
   - **Status**: ENHANCEMENT NEEDED
@@ -149,7 +149,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Priority**: Medium
   - **Description**: Improve category combination validation and error messages
   - **Current Gap**: Could provide more detailed validation for invalid category combinations
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 ---
 
@@ -160,13 +160,13 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Status**: COMPLETED
   - **Requirements**: REQ-046, REQ-047, REQ-088, REQ-089
   - **Description**: Support for both category and categories fields
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 - **TASK-021** 🟢 **Identifier Management**
   - **Status**: COMPLETED
   - **Requirements**: REQ-048, REQ-049
   - **Description**: Unique identifier validation and duplicate detection
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 - **TASK-022** 🟡 **Environment Variable Expansion**
   - **Status**: ENHANCEMENT NEEDED
@@ -174,7 +174,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Priority**: Low
   - **Description**: Enhance environment variable and home directory expansion
   - **Current Gap**: Limited to SSH keyfile paths, could be expanded to other file paths
-  - **Files**: `source/packages/automojo/credentials/sshcredential.py`
+  - **Files**: `source/packages/ccai/credentials/sshcredential.py`
 
 ---
 
@@ -199,7 +199,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Status**: COMPLETED
   - **Requirements**: REQ-054, REQ-055
   - **Description**: Role-based credential categorization and identifier-based access
-  - **Files**: `source/packages/automojo/credentials/basecredential.py`
+  - **Files**: `source/packages/ccai/credentials/basecredential.py`
 
 ---
 
@@ -211,14 +211,14 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Requirements**: REQ-094, REQ-095, REQ-096
   - **Priority**: High
   - **Description**: Create test directory structure matching source hierarchy
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/`
 
 - **TASK-027** 🔴 **Test Resource Factories**
   - **Status**: MISSING
   - **Requirements**: REQ-098
   - **Priority**: Medium
   - **Description**: Create resource factories for test credential provisioning
-  - **Files**: `source/testroots/automojo/testshared/factories/credentials/`
+  - **Files**: `source/testroots/ccai/testshared/factories/credentials/`
 
 ### 6.2 Core Component Tests
 - **TASK-028** 🔴 **BaseCredential Tests**
@@ -226,21 +226,21 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Requirements**: REQ-100
   - **Priority**: High
   - **Description**: Test base credential functionality and validation
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_basecredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_basecredential.py`
 
 - **TASK-029** 🔴 **CredentialManager Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-102, REQ-105, REQ-106
   - **Priority**: High
   - **Description**: Test credential loading, lookup, and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_credentialmanager.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_credentialmanager.py`
 
 - **TASK-030** 🔴 **Singleton Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-065, REQ-066, REQ-067
   - **Priority**: Medium
   - **Description**: Test thread safety and concurrent access
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_wellknown.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_wellknown.py`
 
 ### 6.3 Credential Type Tests
 - **TASK-031** 🔴 **BasicCredential Tests**
@@ -248,77 +248,77 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: High
   - **Description**: Test basic credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_basiccredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_basiccredential.py`
 
 - **TASK-032** 🔴 **SshCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: High
   - **Description**: Test SSH credential validation, keyfile handling, and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_sshcredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_sshcredential.py`
 
 - **TASK-033** 🔴 **ApiTokenCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Medium
   - **Description**: Test API token credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_apitokencredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_apitokencredential.py`
 
 - **TASK-034** 🔴 **AwsAccessKeyCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Medium
   - **Description**: Test AWS credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_awsaccesskeycredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_awsaccesskeycredential.py`
 
 - **TASK-035** 🔴 **AzureClientSecretCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Medium
   - **Description**: Test Azure credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_azureclientsecretcredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_azureclientsecretcredential.py`
 
 - **TASK-036** 🔴 **GithubTokenCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Medium
   - **Description**: Test GitHub token credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_githubtokencredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_githubtokencredential.py`
 
 - **TASK-037** 🔴 **GithubAppCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Medium
   - **Description**: Test GitHub app credential validation, keyfile handling, and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_githubappcredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_githubappcredential.py`
 
 - **TASK-038** 🔴 **PersonalApiTokenCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Low
   - **Description**: Test personal API token credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_personalapitokencredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_personalapitokencredential.py`
 
 - **TASK-039** 🔴 **PublicKeyCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Low
   - **Description**: Test public key credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_publickeycredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_publickeycredential.py`
 
 - **TASK-040** 🔴 **SecretTokenCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Low
   - **Description**: Test secret token credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_secrettokencredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_secrettokencredential.py`
 
 - **TASK-041** 🔴 **WifiChoiceCredential Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-100, REQ-101, REQ-104
   - **Priority**: Low
   - **Description**: Test WiFi credential validation and error scenarios
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_wifichoicecredential.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_wifichoicecredential.py`
 
 ### 6.4 Integration Tests
 - **TASK-042** 🔴 **Multi-Category Credential Tests**
@@ -326,14 +326,14 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Requirements**: REQ-103
   - **Priority**: High
   - **Description**: Test multi-category credential scenarios and validation
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_multicategory.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_multicategory.py`
 
 - **TASK-043** 🔴 **Configuration Integration Tests**
   - **Status**: MISSING
   - **Requirements**: REQ-132, REQ-133, REQ-134
   - **Priority**: Medium
   - **Description**: Test integration with AutoMojo configuration system
-  - **Files**: `source/testroots/automojo/tests/singlehost/credentials/test_configuration_integration.py`
+  - **Files**: `source/testroots/ccai/tests/singlehost/credentials/test_configuration_integration.py`
 
 ---
 
@@ -405,7 +405,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Requirements**: REQ-059, REQ-060, REQ-061
   - **Priority**: Low
   - **Description**: Create performance benchmarks for credential operations
-  - **Files**: `source/testroots/automojo/tests/performance/credentials/`
+  - **Files**: `source/testroots/ccai/tests/performance/credentials/`
 
 ---
 
@@ -418,14 +418,14 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Priority**: Low
   - **Description**: Enhance framework for easier addition of new credential types
   - **Current Gap**: Manual registration required, could be more automated
-  - **Files**: `source/packages/automojo/credentials/credentialmanager.py`
+  - **Files**: `source/packages/ccai/credentials/credentialmanager.py`
 
 - **TASK-053** 🔴 **Migration Utilities**
   - **Status**: MISSING
   - **Requirements**: REQ-115, REQ-116
   - **Priority**: Low
   - **Description**: Create utilities for configuration format migration
-  - **Files**: `source/packages/automojo/credentials/migration/`
+  - **Files**: `source/packages/ccai/credentials/migration/`
 
 ### 9.2 Backward Compatibility
 - **TASK-054** 🟡 **Compatibility Testing**
@@ -447,7 +447,7 @@ This document outlines the implementation tasks for the AutoMojo Credentials Pac
   - **Priority**: Medium
   - **Description**: Enhance integration with AutoMojo configuration system
   - **Current Gap**: Basic integration exists, could be more robust
-  - **Files**: `source/packages/automojo/credentials/wellknown.py`
+  - **Files**: `source/packages/ccai/credentials/wellknown.py`
 
 - **TASK-056** 🔴 **Testbase Framework Integration**
   - **Status**: MISSING

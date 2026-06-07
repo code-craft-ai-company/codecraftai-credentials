@@ -16,4 +16,4 @@
       asserting serialise → reconstruct equality over arbitrary syntactically-valid
       token-id strings.
 - [x] 9. Cross-link this spec from
-      `automojo-provisioning/specs/venue-proxmox/design.md`.
+      `codecraftai-provisioning/specs/venue-proxmox/design.md`.

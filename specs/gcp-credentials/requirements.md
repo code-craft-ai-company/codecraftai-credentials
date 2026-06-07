@@ -11,10 +11,10 @@ Cloud Platform venue authentication:
   token type, service account email) for keyless authentication.
 
 Both follow the patterns established by `awsaccesskeycredential.py`.  Consumers in
-`automojo-provisioning/venues/google` select credentials by the `cloud-venue`
+`codecraftai-provisioning/venues/google` select credentials by the `cloud-venue`
 category.
 
-See Also: [`venue-gcp`](../../../automojo-provisioning/specs/venue-gcp/requirements.md).
+See Also: [`venue-gcp`](../../../codecraftai-provisioning/specs/venue-gcp/requirements.md).
 
 ---
 

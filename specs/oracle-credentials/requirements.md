@@ -3,7 +3,7 @@
 ## Introduction
 
 The `oracle-credentials` feature adds an `OracleCloudApiKeyCredential` class to
-`automojo-credentials`.  The class wraps the four-field OCI API-key credential
+`codecraftai-credentials`.  The class wraps the four-field OCI API-key credential
 material — tenancy OCID, user OCID, private key, and key fingerprint — used by the
 Oracle Cloud venue provisioner (`venues/oracle/`) through the `oci` SDK.
 
@@ -12,7 +12,7 @@ It inherits from `BaseCredential` and follows the patterns established by
 runtime parameter on the provisioner, not part of the credential itself.
 
 See Also:
-[`venue-oracle`](../../../automojo-provisioning/specs/venue-oracle/requirements.md).
+[`venue-oracle`](../../../codecraftai-provisioning/specs/venue-oracle/requirements.md).
 
 ---
 

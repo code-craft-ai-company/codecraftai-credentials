@@ -8,8 +8,8 @@ via the `cloud-venue` category filter and uses the `token` property as the beare
 credential for `pydo` / REST calls.
 
 See Also:
-- `automojo-provisioning/specs/venue-digitalocean/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-digitalocean/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -17,7 +17,7 @@ See Also:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│      automojo-provisioning venue-digitalocean           │
+│      codecraftai-provisioning venue-digitalocean           │
 │   resolves credential by identifier and uses .token     │
 └────────────────────────────┬────────────────────────────┘
                              │
@@ -66,11 +66,11 @@ Required category: `"cloud-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── digitaloceanapitokencredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_digitaloceanapitokencredential.py
 └── test_digitalocean_credentials_properties.py
 ```

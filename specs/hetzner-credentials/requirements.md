@@ -3,14 +3,14 @@
 ## Introduction
 
 The `hetzner-credentials` feature adds a `HetznerApiTokenCredential` class to
-`automojo-credentials`.  The class wraps a single Hetzner Cloud API token used by
+`codecraftai-credentials`.  The class wraps a single Hetzner Cloud API token used by
 the Hetzner venue provisioner (`venues/hetzner/`) through the `hcloud` SDK.
 
 It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-hetzner`](../../../automojo-provisioning/specs/venue-hetzner/requirements.md).
+[`venue-hetzner`](../../../codecraftai-provisioning/specs/venue-hetzner/requirements.md).
 
 ---
 

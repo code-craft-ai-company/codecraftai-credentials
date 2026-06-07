@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `nebius-credentials` feature adds a `NebiusServiceAccountCredential` class to `automojo-credentials`.
+The `nebius-credentials` feature adds a `NebiusServiceAccountCredential` class to `codecraftai-credentials`.
 The class wraps the authentication material used by the nebius venue provisioner
 (`venues/nebius/`) against the Nebius REST API.
 
@@ -10,7 +10,7 @@ It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-nebius`](../../../automojo-provisioning/specs/venue-nebius/requirements.md).
+[`venue-nebius`](../../../codecraftai-provisioning/specs/venue-nebius/requirements.md).
 
 ---
 

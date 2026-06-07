@@ -3,7 +3,7 @@
 ## 1. Project Overview
 
 ### 1.1 Purpose
-The AutoMojo Credentials Package shall provide a comprehensive, secure, and extensible credential management system for the Automation Mojo testing framework. The system must support multiple authentication methods commonly used in automated testing scenarios while maintaining security best practices and ease of configuration.
+The AutoMojo Credentials Package shall provide a comprehensive, secure, and extensible credential management system for the Code Craft AI testing framework. The system must support multiple authentication methods commonly used in automated testing scenarios while maintaining security best practices and ease of configuration.
 
 ### 1.2 Scope
 This package shall handle credential storage, validation, retrieval, and management for automated testing environments. It shall support both single-category and multi-category credentials while providing a unified interface for credential access.
@@ -175,7 +175,7 @@ This package shall handle credential storage, validation, retrieval, and managem
 - **REQ-090**: Credential-specific fields SHALL be validated according to credential type requirements
 
 #### 4.2.2 Integration Interface
-- **REQ-091**: The system SHALL integrate with automojo-configuration package
+- **REQ-091**: The system SHALL integrate with codecraftai-configuration package
 - **REQ-092**: The system SHALL support ContextPaths for configuration URI tracking
 - **REQ-093**: The system SHALL work with CONFIGURATION_MAPS for credential loading
 
@@ -184,7 +184,7 @@ This package shall handle credential storage, validation, retrieval, and managem
 ### 5.1 Test Organization
 
 #### 5.1.1 Test Structure
-- **REQ-094**: Tests SHALL be organized under `source/testroots/automojo/tests/singlehost/credentials/`
+- **REQ-094**: Tests SHALL be organized under `source/testroots/ccai/tests/singlehost/credentials/`
 - **REQ-095**: Test hierarchy SHALL match source code hierarchy
 - **REQ-096**: Each credential type SHALL have corresponding test file
 
@@ -255,9 +255,9 @@ This package shall handle credential storage, validation, retrieval, and managem
 ### 8.1 Required Dependencies
 
 #### 8.1.1 AutoMojo Packages
-- **REQ-127**: System SHALL depend on automojo-xmodules for core utilities
-- **REQ-128**: System SHALL depend on automojo-configuration for configuration management
-- **REQ-129**: System SHALL integrate with automojo-testbase for testing framework support
+- **REQ-127**: System SHALL depend on codecraftai-xmodules for core utilities
+- **REQ-128**: System SHALL depend on codecraftai-configuration for configuration management
+- **REQ-129**: System SHALL integrate with codecraftai-testbase for testing framework support
 
 #### 8.1.2 Python Standard Library
 - **REQ-130**: System SHALL use only Python standard library for core functionality

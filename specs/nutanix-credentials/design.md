@@ -7,8 +7,8 @@ Central authentication: username + password plus the Prism Central endpoint URL.
 The Nutanix venue provisioner consumes it via the `vm-venue` category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-nutanix/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/basiccredential.py`
+- `codecraftai-provisioning/specs/venue-nutanix/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/basiccredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-nutanix                 │
+│        codecraftai-provisioning venue-nutanix                 │
 │   POSTs to <endpoint>/api/nutanix/... with basic auth      │
 └────────────────────────────┬───────────────────────────────┘
                              ▼
@@ -73,11 +73,11 @@ Required category: `"vm-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── nutanixprismcredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_nutanixprismcredential.py
 └── test_nutanix_credentials_properties.py
 ```

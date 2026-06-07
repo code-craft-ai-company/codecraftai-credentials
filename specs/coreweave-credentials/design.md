@@ -5,14 +5,14 @@
 `CoreweaveApiCredential` is a `BaseCredential` subclass wrapping a CoreWeave API
 token plus optional organisation scope.  The credential intentionally does **not**
 hold a kubeconfig — kubeconfig issuance happens inside
-`automojo-interop-coreweave` at use time, and the resulting kubeconfig is handed
-to `automojo-interop-kubernetes` for all subsequent calls.  This keeps the
+`codecraftai-interop-coreweave` at use time, and the resulting kubeconfig is handed
+to `codecraftai-interop-kubernetes` for all subsequent calls.  This keeps the
 "one transport per interop package" invariant from §8 of the design plan.
 
 See Also:
-- `automojo-provisioning/specs/venue-coreweave/design.md`
+- `codecraftai-provisioning/specs/venue-coreweave/design.md`
 - `PLAN-VPN-AND-CLOUD-PROVISIONING.md` §7.6 (CoreWeave auth decision)
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -20,7 +20,7 @@ See Also:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│      automojo-provisioning venue-coreweave                 │
+│      codecraftai-provisioning venue-coreweave                 │
 │   selects credential by identifier (hpc-venue category)    │
 └────────────────────────────┬───────────────────────────────┘
                              ▼
@@ -35,12 +35,12 @@ See Also:
                              │ used by
                              ▼
    ┌─────────────────────────────────────────────────────┐
-   │   automojo-interop-coreweave                        │
+   │   codecraftai-interop-coreweave                        │
    │   exchanges (token, org) → kubeconfig at use time   │
    └────────────────────────┬────────────────────────────┘
                              ▼
    ┌─────────────────────────────────────────────────────┐
-   │   automojo-interop-kubernetes (all K8s calls)       │
+   │   codecraftai-interop-kubernetes (all K8s calls)       │
    └─────────────────────────────────────────────────────┘
 ```
 
@@ -79,11 +79,11 @@ Required category: `"hpc-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── coreweaveapicredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_coreweaveapicredential.py
 └── test_coreweave_credentials_properties.py
 ```

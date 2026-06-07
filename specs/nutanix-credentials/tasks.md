@@ -15,4 +15,4 @@
 - [x] 8. Add a `hypothesis` property test `test_nutanix_credential_roundtrip`
       asserting serialise → reconstruct equality over arbitrary valid inputs.
 - [x] 9. Cross-link this spec from
-      `automojo-provisioning/specs/venue-nutanix/design.md`.
+      `codecraftai-provisioning/specs/venue-nutanix/design.md`.

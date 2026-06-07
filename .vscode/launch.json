@@ -22,8 +22,8 @@
             "args": [
                 "testing",
                 "run",
-                "--root=${workspaceFolder}/source/testroots/automojo",
-                "--includes=automojo.tests.singlehost",
+                "--root=${workspaceFolder}/source/testroots/ccai",
+                "--includes=ccai.tests.singlehost",
                 "--breakpoint=testrun-start"
             ],
             "console": "integratedTerminal",

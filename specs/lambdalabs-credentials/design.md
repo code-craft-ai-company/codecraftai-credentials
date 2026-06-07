@@ -7,8 +7,8 @@ authentication material.  The lambdalabs venue provisioner consumes it via the
 `hpc-venue` category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-lambdalabs/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-lambdalabs/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-lambdalabs                     │
+│        codecraftai-provisioning venue-lambdalabs                     │
 │   resolves credential by identifier                      │
 └────────────────────────────┬─────────────────────────────┘
                              ▼
@@ -64,11 +64,11 @@ Required category: `"hpc-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── lambdalabsapikeycredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_lambdalabsapikeycredential.py
 └── test_lambdalabs_credentials_properties.py
 ```

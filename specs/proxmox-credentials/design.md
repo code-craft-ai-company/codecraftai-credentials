@@ -8,8 +8,8 @@ API token (token id + secret).  The Proxmox venue provisioner consumes it via th
 form that Proxmox requires in the `Authorization: PVEAPIToken=` header.
 
 See Also:
-- `automojo-provisioning/specs/venue-proxmox/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-proxmox/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -17,7 +17,7 @@ See Also:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-proxmox                 │
+│        codecraftai-provisioning venue-proxmox                 │
 │   sends `PVEAPIToken=<token_id>=<secret>` header           │
 └────────────────────────────┬───────────────────────────────┘
                              ▼
@@ -72,11 +72,11 @@ Required category: `"vm-venue"`.  Token id must match
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── proxmoxapitokencredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_proxmoxapitokencredential.py
 └── test_proxmox_credentials_properties.py
 ```

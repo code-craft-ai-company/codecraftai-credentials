@@ -7,8 +7,8 @@ Cloud API token.  The Hetzner venue provisioner consumes it via the `cloud-venue
 category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-hetzner/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-hetzner/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-hetzner               │
+│        codecraftai-provisioning venue-hetzner               │
 │   resolves credential by identifier and uses .token      │
 └────────────────────────────┬─────────────────────────────┘
                              ▼
@@ -64,11 +64,11 @@ Required category: `"cloud-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── hetznerapitokencredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_hetznerapitokencredential.py
 └── test_hetzner_credentials_properties.py
 ```

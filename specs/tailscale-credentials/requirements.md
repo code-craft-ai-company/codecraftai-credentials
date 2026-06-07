@@ -3,7 +3,7 @@
 ## Introduction
 
 The `tailscale-credentials` feature adds two new credential classes to
-`automojo-credentials` for Tailscale: `TailscaleAuthKeyCredential`
+`codecraftai-credentials` for Tailscale: `TailscaleAuthKeyCredential`
 (static, pre-minted auth key) and `TailscaleOAuthCredential` (OAuth
 client id + secret used by `IVPNControlPlane` to mint short-lived
 ephemeral keys). Both follow the established
@@ -19,7 +19,7 @@ path. The credential classes themselves do not enforce that policy —
 that lives in the provisioning engine — but the design documents
 the preferred usage.
 
-**See Also:** [vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md),
+**See Also:** [vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md),
 [well-known-vpn-and-venue-categories](../well-known-vpn-and-venue-categories/design.md).
 
 ---

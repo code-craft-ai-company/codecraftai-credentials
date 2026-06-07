@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `lambdalabs-credentials` feature adds a `LambdalabsApiKeyCredential` class to `automojo-credentials`.
+The `lambdalabs-credentials` feature adds a `LambdalabsApiKeyCredential` class to `codecraftai-credentials`.
 The class wraps the authentication material used by the lambdalabs venue provisioner
 (`venues/lambdalabs/`) against the Lambda Labs REST API.
 
@@ -10,7 +10,7 @@ It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-lambdalabs`](../../../automojo-provisioning/specs/venue-lambdalabs/requirements.md).
+[`venue-lambdalabs`](../../../codecraftai-provisioning/specs/venue-lambdalabs/requirements.md).
 
 ---
 

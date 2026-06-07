@@ -7,8 +7,8 @@ authentication material.  The linode venue provisioner consumes it via the
 `cloud-venue` category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-linode/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-linode/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-linode                     │
+│        codecraftai-provisioning venue-linode                     │
 │   resolves credential by identifier                      │
 └────────────────────────────┬─────────────────────────────┘
                              ▼
@@ -64,11 +64,11 @@ Required category: `"cloud-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── linodeapitokencredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_linodeapitokencredential.py
 └── test_linode_credentials_properties.py
 ```

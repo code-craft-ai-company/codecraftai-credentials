@@ -21,4 +21,4 @@
        and `test_gcp_workload_identity_roundtrip` asserting serialise → reconstruct
        equality over arbitrary valid inputs.
 - [x] 12. Cross-link this spec from
-       `automojo-provisioning/specs/venue-gcp/design.md`.
+       `codecraftai-provisioning/specs/venue-gcp/design.md`.

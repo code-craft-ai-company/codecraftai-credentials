@@ -14,4 +14,4 @@
 - [x] 8. Add a `hypothesis` property test `test_vultr_token_roundtrip` asserting
       serialise → reconstruct equality over arbitrary valid tokens.
 - [x] 9. Cross-link this spec from
-      `automojo-provisioning/specs/venue-vultr/design.md`.
+      `codecraftai-provisioning/specs/venue-vultr/design.md`.

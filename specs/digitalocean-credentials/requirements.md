@@ -3,7 +3,7 @@
 ## Introduction
 
 The `digitalocean-credentials` feature adds a `DigitalOceanApiTokenCredential` class
-to `automojo-credentials`.  The class wraps a single DigitalOcean personal-access
+to `codecraftai-credentials`.  The class wraps a single DigitalOcean personal-access
 token used by the DigitalOcean venue provisioner (`venues/digitalocean/`).
 
 The class inherits from `BaseCredential` and follows the patterns established by
@@ -12,7 +12,7 @@ The class inherits from `BaseCredential` and follows the patterns established by
 `as_dict()` override.
 
 See Also:
-[`venue-digitalocean`](../../../automojo-provisioning/specs/venue-digitalocean/requirements.md).
+[`venue-digitalocean`](../../../codecraftai-provisioning/specs/venue-digitalocean/requirements.md).
 
 ---
 
