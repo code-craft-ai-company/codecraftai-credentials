@@ -2,8 +2,8 @@
 
 ## Module and Models
 
-- [x] 1. Create `automojo-credentials/source/packages/automojo/credentials/tailscaleauthkeycredential.py`.
-- [x] 2. Create `automojo-credentials/source/packages/automojo/credentials/tailscaleoauthcredential.py`.
+- [x] 1. Create `codecraftai-credentials/source/packages/ccai/credentials/tailscaleauthkeycredential.py`.
+- [x] 2. Create `codecraftai-credentials/source/packages/ccai/credentials/tailscaleoauthcredential.py`.
 - [x] 3. Mirror the file/module conventions from
   `awsaccesskeycredential.py` (header, copyright, Sphinx docstring).
 

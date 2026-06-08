@@ -3,7 +3,7 @@
 ## Introduction
 
 The `proxmox-credentials` feature adds a `ProxmoxApiTokenCredential` class to
-`automojo-credentials`.  The class wraps the two-field Proxmox API token
+`codecraftai-credentials`.  The class wraps the two-field Proxmox API token
 (token id + secret) used by the Proxmox venue provisioner (`venues/proxmox/`)
 against the Proxmox REST API on port 8006.
 
@@ -12,7 +12,7 @@ It inherits from `BaseCredential` and follows the patterns established by
 registered under the `vm-venue` category.
 
 See Also:
-[`venue-proxmox`](../../../automojo-provisioning/specs/venue-proxmox/requirements.md).
+[`venue-proxmox`](../../../codecraftai-provisioning/specs/venue-proxmox/requirements.md).
 
 ---
 

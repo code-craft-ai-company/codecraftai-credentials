@@ -2,7 +2,7 @@
 
 ## Module and Models
 
-- [x] 1. Open `automojo-credentials/source/packages/automojo/credentials/wellknown.py`
+- [x] 1. Open `codecraftai-credentials/source/packages/ccai/credentials/wellknown.py`
   for in-place extension.
 - [x] 2. Add the five category constants: `CATEGORY_VPN`,
   `CATEGORY_MESH`, `CATEGORY_CLOUD_VENUE`, `CATEGORY_VM_VENUE`,

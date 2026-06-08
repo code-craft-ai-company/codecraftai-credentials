@@ -8,8 +8,8 @@ fingerprint) plus an optional `passphrase` for encrypted keys.  The Oracle venue
 provisioner consumes it via the `cloud-venue` category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-oracle/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-oracle/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -17,7 +17,7 @@ See Also:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-oracle                  │
+│        codecraftai-provisioning venue-oracle                  │
 │   builds an oci.Signer from the credential's four fields   │
 └────────────────────────────┬───────────────────────────────┘
                              ▼
@@ -82,11 +82,11 @@ Required category: `"cloud-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── oraclecloudapikeycredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_oraclecloudapikeycredential.py
 └── test_oracle_credentials_properties.py
 ```

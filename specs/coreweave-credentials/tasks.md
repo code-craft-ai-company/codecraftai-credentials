@@ -8,7 +8,7 @@
 - [x] 5. Implement `as_dict()` extending the base mapping with both fields.
 - [x] 6. Explicitly omit any kubeconfig field — note in module docstring that
       kubeconfig issuance is the responsibility of
-      `automojo-interop-coreweave` at use time per §7 decision.
+      `codecraftai-interop-coreweave` at use time per §7 decision.
 - [x] 7. Register the class in `wellknown.py` under categories
       `["hpc-venue", "coreweave-api-token"]`.
 - [x] 8. Add example-based unit tests covering construction, category enforcement,
@@ -17,4 +17,4 @@
 - [x] 9. Add a `hypothesis` property test `test_coreweave_credential_roundtrip`
       asserting serialise → reconstruct equality.
 - [x] 10. Cross-link this spec from
-       `automojo-provisioning/specs/venue-coreweave/design.md`.
+       `codecraftai-provisioning/specs/venue-coreweave/design.md`.

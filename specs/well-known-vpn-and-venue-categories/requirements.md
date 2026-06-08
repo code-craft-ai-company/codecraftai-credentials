@@ -3,7 +3,7 @@
 ## Introduction
 
 The `well-known-vpn-and-venue-categories` feature extends
-`automojo-credentials/wellknown.py` so the credential manager exposes
+`codecraftai-credentials/wellknown.py` so the credential manager exposes
 named categories that consumers can use to find credentials by
 purpose without knowing the per-provider class names. Per §8
 commitment "Credentials are values, not strings," the credential

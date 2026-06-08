@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `runpod-credentials` feature adds a `RunpodApiKeyCredential` class to `automojo-credentials`.
+The `runpod-credentials` feature adds a `RunpodApiKeyCredential` class to `codecraftai-credentials`.
 The class wraps the authentication material used by the runpod venue provisioner
 (`venues/runpod/`) against the RunPod REST API.
 
@@ -10,7 +10,7 @@ It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-runpod`](../../../automojo-provisioning/specs/venue-runpod/requirements.md).
+[`venue-runpod`](../../../codecraftai-provisioning/specs/venue-runpod/requirements.md).
 
 ---
 

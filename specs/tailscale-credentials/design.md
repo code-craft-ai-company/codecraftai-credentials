@@ -3,7 +3,7 @@
 ## Overview
 
 Two new credential classes are added under
-`automojo-credentials/source/packages/automojo/credentials/`:
+`codecraftai-credentials/source/packages/ccai/credentials/`:
 
 - `tailscaleauthkeycredential.py` — `TailscaleAuthKeyCredential`
 - `tailscaleoauthcredential.py` — `TailscaleOAuthCredential`
@@ -18,7 +18,7 @@ The classes are registered with the well-known categories `vpn` and
 `mesh` so the credential manager can hand back the right credential
 to an `IVPNControlPlane` implementation by category lookup.
 
-**See Also:** [vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md),
+**See Also:** [vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md),
 [well-known-vpn-and-venue-categories](../well-known-vpn-and-venue-categories/design.md).
 
 ---
@@ -155,7 +155,7 @@ Properties return the stored value; no computation. `__repr__` redacts
 ## Module Layout
 
 ```
-automojo-credentials/source/packages/automojo/credentials/
+codecraftai-credentials/source/packages/ccai/credentials/
   tailscaleauthkeycredential.py
   tailscaleoauthcredential.py
   wellknown.py            (extended — see sibling spec)
@@ -167,7 +167,7 @@ automojo-credentials/source/packages/automojo/credentials/
 
 ## See Also
 
-- [vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md)
+- [vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md)
   — `TailscaleOAuthCredential` is the canonical credential consumed by
   `IVPNControlPlane.mint_authkey`.
 - [twingate-credentials](../twingate-credentials/design.md) — peer

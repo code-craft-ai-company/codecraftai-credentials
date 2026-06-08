@@ -7,8 +7,8 @@ authentication material.  The vultr venue provisioner consumes it via the
 `cloud-venue` category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-vultr/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-vultr/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-vultr                     │
+│        codecraftai-provisioning venue-vultr                     │
 │   resolves credential by identifier                      │
 └────────────────────────────┬─────────────────────────────┘
                              ▼
@@ -64,11 +64,11 @@ Required category: `"cloud-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── vultrapikeycredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_vultrapikeycredential.py
 └── test_vultr_credentials_properties.py
 ```

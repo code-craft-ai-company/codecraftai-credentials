@@ -14,8 +14,8 @@ Both follow the patterns established by `awsaccesskeycredential.py` and
 override that extends the base mapping.
 
 See Also:
-- `automojo-provisioning/specs/venue-azure/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/azureclientsecretcredential.py`
+- `codecraftai-provisioning/specs/venue-azure/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/azureclientsecretcredential.py`
 
 ---
 
@@ -23,7 +23,7 @@ See Also:
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│              automojo-provisioning venue-azure                │
+│              codecraftai-provisioning venue-azure                │
 │   resolves credential by identifier from CredentialManager    │
 └───────────────────────────┬───────────────────────────────────┘
                             │ get_credential_by_identifier(...)
@@ -118,12 +118,12 @@ user-assigned identity is being referenced by both selectors.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── azureserviceprincipalcredential.py    ← AzureServicePrincipalCredential
 ├── azuremanagedidentitycredential.py     ← AzureManagedIdentityCredential
 └── wellknown.py                          ← category map registration
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_azureserviceprincipalcredential.py
 ├── test_azuremanagedidentitycredential.py
 └── test_azure_credentials_properties.py  ← hypothesis property tests

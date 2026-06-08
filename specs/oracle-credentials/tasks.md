@@ -20,4 +20,4 @@
       asserting serialise → reconstruct equality over arbitrary valid OCID-prefixed
       inputs.
 - [x] 10. Cross-link this spec from
-       `automojo-provisioning/specs/venue-oracle/design.md`.
+       `codecraftai-provisioning/specs/venue-oracle/design.md`.

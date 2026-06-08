@@ -15,4 +15,4 @@
 - [x] 8. Add a `hypothesis` property test `test_crusoe_credential_roundtrip`
       asserting serialise → reconstruct equality.
 - [x] 9. Cross-link this spec from
-      `automojo-provisioning/specs/venue-crusoe/design.md`.
+      `codecraftai-provisioning/specs/venue-crusoe/design.md`.

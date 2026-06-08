@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `linode-credentials` feature adds a `LinodeApiTokenCredential` class to `automojo-credentials`.
+The `linode-credentials` feature adds a `LinodeApiTokenCredential` class to `codecraftai-credentials`.
 The class wraps the authentication material used by the linode venue provisioner
 (`venues/linode/`) against the linode_api4 SDK.
 
@@ -10,7 +10,7 @@ It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-linode`](../../../automojo-provisioning/specs/venue-linode/requirements.md).
+[`venue-linode`](../../../codecraftai-provisioning/specs/venue-linode/requirements.md).
 
 ---
 

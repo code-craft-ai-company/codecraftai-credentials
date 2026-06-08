@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `azure-credentials` feature adds two new credential classes to `automojo-credentials`
+The `azure-credentials` feature adds two new credential classes to `codecraftai-credentials`
 for authenticating against Microsoft Azure cloud venues from the provisioning,
 landscaping, and interop layers:
 
@@ -21,7 +21,7 @@ file-layout conventions used by `awsaccesskeycredential.py` and
 `azureclientsecretcredential.py`.  The Azure venue provisioner consumes these
 credentials via the `cloud-venue` category filter.
 
-See Also: [`venue-azure`](../../../automojo-provisioning/specs/venue-azure/requirements.md).
+See Also: [`venue-azure`](../../../codecraftai-provisioning/specs/venue-azure/requirements.md).
 
 ---
 

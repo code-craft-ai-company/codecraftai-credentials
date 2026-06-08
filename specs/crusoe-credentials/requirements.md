@@ -3,7 +3,7 @@
 ## Introduction
 
 The `crusoe-credentials` feature adds a `CrusoeApiKeyCredential` class to
-`automojo-credentials`.  The class wraps the two-field Crusoe Cloud API credential
+`codecraftai-credentials`.  The class wraps the two-field Crusoe Cloud API credential
 (access key id + secret) used by the Crusoe venue provisioner (`venues/crusoe/`)
 against `api.crusoecloud.com`.
 
@@ -13,7 +13,7 @@ credential is registered under both `cloud-venue` and `hpc-venue` so consumers c
 discover it through either path.
 
 See Also:
-[`venue-crusoe`](../../../automojo-provisioning/specs/venue-crusoe/requirements.md).
+[`venue-crusoe`](../../../codecraftai-provisioning/specs/venue-crusoe/requirements.md).
 
 ---
 

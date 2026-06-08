@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The `equinix-credentials` feature adds a `EquinixMetalApiTokenCredential` class to `automojo-credentials`.
+The `equinix-credentials` feature adds a `EquinixMetalApiTokenCredential` class to `codecraftai-credentials`.
 The class wraps the authentication material used by the equinix venue provisioner
 (`venues/equinix/`) against the Equinix Metal REST API.
 
@@ -10,7 +10,7 @@ It inherits from `BaseCredential` and follows the patterns in
 `awsaccesskeycredential.py`.
 
 See Also:
-[`venue-equinix-metal`](../../../automojo-provisioning/specs/venue-equinix-metal/requirements.md).
+[`venue-equinix-metal`](../../../codecraftai-provisioning/specs/venue-equinix-metal/requirements.md).
 
 ---
 

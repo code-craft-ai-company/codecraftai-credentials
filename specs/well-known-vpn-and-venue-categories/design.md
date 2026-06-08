@@ -3,7 +3,7 @@
 ## Overview
 
 `well-known-vpn-and-venue-categories` extends
-`automojo-credentials/source/packages/automojo/credentials/wellknown.py`
+`codecraftai-credentials/source/packages/ccai/credentials/wellknown.py`
 with five umbrella category constants (`vpn`, `mesh`, `cloud-venue`,
 `vm-venue`, `hpc-venue`), a membership registry mapping each umbrella
 to its per-provider categories, and a `get_credentials_by_category`
@@ -134,7 +134,7 @@ def _require_initialised_singleton() -> CredentialManager:
 ## Module Layout
 
 ```
-automojo-credentials/source/packages/automojo/credentials/
+codecraftai-credentials/source/packages/ccai/credentials/
   wellknown.py            (extended in place)
   credentialmanager.py    (existing — may need a get_credentials_by_categories
                            helper if not already present)
@@ -153,7 +153,7 @@ feature with the simple implementation
   the `vpn` / `mesh` membership.
 - [twingate-credentials](../twingate-credentials/design.md) — seeds
   the `vpn` / `mesh` membership.
-- [vpn-control-plane-protocol](../../../automojo-interfaces/specs/vpn-control-plane-protocol/design.md)
+- [vpn-control-plane-protocol](../../../codecraftai-interfaces/specs/vpn-control-plane-protocol/design.md)
   — the canonical consumer of `get_credentials_by_category("vpn")`.
 
 ---

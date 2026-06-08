@@ -5,7 +5,7 @@
 The `vsphere-credentials` feature promotes the current ad-hoc
 `BasicCredential` usage for VSphere into a typed `VSphereCredential` class.  The
 class wraps username + password + an optional SSO token used by the VSphere venue
-provisioner (`venues/vsphere/`) and by `automojo-interop-vsphere`'s session-mint
+provisioner (`venues/vsphere/`) and by `codecraftai-interop-vsphere`'s session-mint
 flow.
 
 It inherits from `BaseCredential` and follows the patterns established by
@@ -14,8 +14,8 @@ venue, so the credential is registered under the `vm-venue` category (and not
 `cloud-venue`).
 
 See Also:
-- [`venue-vsphere`](../../../automojo-provisioning/specs/venue-vsphere/requirements.md)
-- [`vsphere-client-rest-base`](../../../automojo-interop-vsphere/specs/vsphere-client-rest-base/requirements.md)
+- [`venue-vsphere`](../../../codecraftai-provisioning/specs/venue-vsphere/requirements.md)
+- [`vsphere-client-rest-base`](../../../codecraftai-interop-vsphere/specs/vsphere-client-rest-base/requirements.md)
 
 ---
 

@@ -7,8 +7,8 @@ authentication material.  The equinix venue provisioner consumes it via the
 `cloud-venue` category filter.
 
 See Also:
-- `automojo-provisioning/specs/venue-equinix-metal/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-equinix-metal/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -16,7 +16,7 @@ See Also:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│        automojo-provisioning venue-equinix-metal                     │
+│        codecraftai-provisioning venue-equinix-metal                     │
 │   resolves credential by identifier                      │
 └────────────────────────────┬─────────────────────────────┘
                              ▼
@@ -64,11 +64,11 @@ Required category: `"cloud-venue"`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── equinixmetalapitokencredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_equinixmetalapitokencredential.py
 └── test_equinix_credentials_properties.py
 ```

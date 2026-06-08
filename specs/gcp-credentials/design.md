@@ -14,8 +14,8 @@ category enforcement in `__init__`, read-only properties, `validate()` classmeth
 and `as_dict()` override.
 
 See Also:
-- `automojo-provisioning/specs/venue-gcp/design.md`
-- `automojo-credentials/source/packages/automojo/credentials/awsaccesskeycredential.py`
+- `codecraftai-provisioning/specs/venue-gcp/design.md`
+- `codecraftai-credentials/source/packages/ccai/credentials/awsaccesskeycredential.py`
 
 ---
 
@@ -23,7 +23,7 @@ See Also:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│            automojo-provisioning venue-gcp                  │
+│            codecraftai-provisioning venue-gcp                  │
 │   resolves credential by identifier + cloud-venue filter    │
 └────────────────────────────┬────────────────────────────────┘
                              │
@@ -109,12 +109,12 @@ Both classes override `validate(cls, cred_info)` and `as_dict()`.
 ## Module Layout
 
 ```
-source/packages/automojo/credentials/
+source/packages/ccai/credentials/
 ├── gcpserviceaccountkeycredential.py
 ├── gcpworkloadidentitycredential.py
 └── wellknown.py
 
-source/testroots/testbase/automojo/tests/credentials/
+source/testroots/testbase/ccai/tests/credentials/
 ├── test_gcpserviceaccountkeycredential.py
 ├── test_gcpworkloadidentitycredential.py
 └── test_gcp_credentials_properties.py

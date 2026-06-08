@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `automojo-credentials` package provides a comprehensive credential management system for the Automation Mojo testing framework. It implements a flexible, extensible architecture for handling various types of authentication credentials used in automated testing scenarios.
+The `codecraftai-credentials` package provides a comprehensive credential management system for the Code Craft AI testing framework. It implements a flexible, extensible architecture for handling various types of authentication credentials used in automated testing scenarios.
 
 ## Architecture
 
@@ -17,7 +17,7 @@ The `automojo-credentials` package provides a comprehensive credential managemen
 ### Package Structure
 
 ```
-automojo/credentials/
+ccai/credentials/
 ├── __init__.py                     # Package initialization
 ├── basecredential.py              # Abstract base class for all credentials
 ├── credentialmanager.py           # Central manager for credential loading and lookup
@@ -182,21 +182,21 @@ SOURCE_URIS:
 
 ### Dependencies
 
-- `automojo-xmodules`: Core utilities and collections
-- `automojo-configuration`: Configuration management system
-- `automojo-testbase`: Testing framework integration
+- `codecraftai-xmodules`: Core utilities and collections
+- `codecraftai-configuration`: Configuration management system
+- `codecraftai-testbase`: Testing framework integration
 
 ### Usage Patterns
 
 ```python
 # Singleton access
-from automojo.credentials.wellknown import CredentialManagerSingleton
+from ccai.credentials.wellknown import CredentialManagerSingleton
 
 credmgr = CredentialManagerSingleton()
 ssh_cred = credmgr.lookup_credential("ssh-server-access")
 
 # Direct manager usage
-from automojo.credentials.credentialmanager import CredentialManager
+from ccai.credentials.credentialmanager import CredentialManager
 
 credmgr = CredentialManager()
 credmgr.load_credentials(config_dict, source_uris=["config.yaml"])
@@ -223,7 +223,7 @@ api_cred = credmgr.lookup_credential("api-token")
 
 Following the testbase framework structure:
 ```
-source/testroots/automojo/tests/singlehost/credentials/
+source/testroots/ccai/tests/singlehost/credentials/
 ├── test_credentialmanager.py
 ├── test_basiccredential.py
 ├── test_sshcredential.py
@@ -234,7 +234,7 @@ source/testroots/automojo/tests/singlehost/credentials/
 
 ```bash
 source .venv/bin/activate
-testbase testing run --root source/testroots/automojo --includes=automojo.tests.singlehost --output=test_output
+testbase testing run --root source/testroots/ccai --includes=ccai.tests.singlehost --output=test_output
 ```
 
 ## Future Extensibility

@@ -1,8 +1,8 @@
 ============================
-Automation Mojo Credentials
+Code Craft AI Credentials
 ============================
 
-The ``automojo-credentials`` package is the credentials vocabulary for the automojo suite. It defines a small hierarchy of credential classes rooted at ``BaseCredential`` and adds concrete types for the authentication styles the rest of the suite has to talk to. A ``CredentialManager`` loads credentials from configuration and exposes them by name so that protocol and REST clients (for example ``automojo-protocol-ssh``, ``automojo-restclient-github-public``, and ``automojo-gitlab``) can request the credential they need without hard-coding authentication details.
+The ``codecraftai-credentials`` package is the credentials vocabulary for the ccai suite. It defines a small hierarchy of credential classes rooted at ``BaseCredential`` and adds concrete types for the authentication styles the rest of the suite has to talk to. A ``CredentialManager`` loads credentials from configuration and exposes them by name so that protocol and REST clients (for example ``codecraftai-protocol-ssh``, ``codecraftai-restclient-github-public``, and ``codecraftai-gitlab``) can request the credential they need without hard-coding authentication details.
 
 Highlights
 ==========
@@ -12,7 +12,7 @@ Highlights
 - Token-oriented types: ``ApiTokenCredential``, ``SecretTokenCredential``, ``PersonalApiTokenCredential``.
 - Vendor-specific credentials: ``GithubTokenCredential``, ``GithubAppCredential``, ``AwsAccessKeyCredential``, and ``AzureClientSecretCredential``.
 - ``WifiChoiceCredential`` for network-selection scenarios.
-- Implements the ``IBasicCredential`` interface from ``automojo-interfaces``.
+- Implements the ``IBasicCredential`` interface from ``codecraftai-interfaces``.
 
 Repository Structure
 ====================
