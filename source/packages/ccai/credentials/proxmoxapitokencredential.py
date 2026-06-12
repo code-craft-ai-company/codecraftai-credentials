@@ -31,6 +31,7 @@ class ProxmoxApiTokenCredential(BaseCredential):
         .. code:: yaml
             "identifier": "proxmox-token"
             "category": "vm-venue"
+            "provider": "proxmox"
             "token_id": "root@pam!automation"
             "secret": "..."
 

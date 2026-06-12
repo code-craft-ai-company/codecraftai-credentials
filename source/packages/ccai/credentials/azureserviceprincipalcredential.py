@@ -29,6 +29,7 @@ class AzureServicePrincipalCredential(BaseCredential):
         .. code:: yaml
             "identifier": "azure-sp"
             "category": "cloud-venue"
+            "provider": "azure-service-principal"
             "tenant_id": ""
             "client_id": ""
             "client_secret": "@@&_@@&_LetMeComeIn"

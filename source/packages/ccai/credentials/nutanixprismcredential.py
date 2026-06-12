@@ -30,6 +30,7 @@ class NutanixPrismCredential(BaseCredential):
         .. code:: yaml
             "identifier": "nutanix-prism"
             "category": "vm-venue"
+            "provider": "nutanix-prism"
             "username": "admin"
             "password": "..."
             "endpoint": "https://prism.example.com:9440"

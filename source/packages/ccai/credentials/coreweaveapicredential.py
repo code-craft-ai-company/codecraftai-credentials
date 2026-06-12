@@ -32,6 +32,7 @@ class CoreweaveApiCredential(BaseCredential):
         .. code:: yaml
             "identifier": "coreweave-token"
             "category": "hpc-venue"
+            "provider": "coreweave"
             "token": "..."
             "organization_id": null
 

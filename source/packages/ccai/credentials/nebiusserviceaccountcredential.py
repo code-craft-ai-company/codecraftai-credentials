@@ -29,6 +29,7 @@ class NebiusServiceAccountCredential(BaseCredential):
         .. code:: yaml
             "identifier": "nebius-svc"
             "category": "hpc-venue"
+            "provider": "nebius"
             "token": "ne1...."
 
     """

@@ -29,6 +29,7 @@ class GcpServiceAccountKeyCredential(BaseCredential):
         .. code:: yaml
             "identifier": "gcp-sa"
             "category": "cloud-venue"
+            "provider": "gcp-service-account"
             "project_id": "my-project"
             "client_email": "svc@my-project.iam.gserviceaccount.com"
             "private_key_id": "abcdef0123456789"

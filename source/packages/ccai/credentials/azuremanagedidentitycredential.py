@@ -31,6 +31,7 @@ class AzureManagedIdentityCredential(BaseCredential):
         .. code:: yaml
             "identifier": "azure-mi"
             "category": "cloud-venue"
+            "provider": "azure-managed-identity"
             "client_id": ""
             "resource_id": ""
 

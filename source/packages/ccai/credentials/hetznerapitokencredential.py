@@ -29,6 +29,7 @@ class HetznerApiTokenCredential(BaseCredential):
         .. code:: yaml
             "identifier": "hetzner-token"
             "category": "cloud-venue"
+            "provider": "hetzner"
             "token": "..."
 
     """

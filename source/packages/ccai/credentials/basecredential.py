@@ -16,6 +16,44 @@ from typing import Any, Dict, List, Optional
 
 from ccai.errors.exceptions import ConfigurationError
 
+
+# Substrings (case-insensitive) used to identify secret-bearing fields in a
+# credential's as_dict() output so they can be masked for safe display/logging.
+SENSITIVE_FIELD_SUBSTRINGS = (
+    "password",
+    "passwd",
+    "passphrase",
+    "token",
+    "secret",
+    "private",
+    "api_key",
+    "apikey",
+    "access_key",
+    "authkey",
+    "auth_key",
+    "client_secret",
+)
+
+REDACTED_PLACEHOLDER = "***REDACTED***"
+
+
+def is_sensitive_field(field_name: str) -> bool:
+    """
+        Indicates whether a credential field name denotes secret material.
+
+        :param field_name: The credential dictionary key to test.
+
+        :returns: ``True`` if the field should be redacted for display/logging.
+    """
+    lowered = field_name.lower()
+    rtnval = False
+    for marker in SENSITIVE_FIELD_SUBSTRINGS:
+        if marker in lowered:
+            rtnval = True
+            break
+    return rtnval
+
+
 class BaseCredential:
     """
         The :class:`BaseCredential` is the base container object for credentials passed in the landscape
@@ -73,7 +111,14 @@ class BaseCredential:
     
     def as_dict(self) -> Dict[str, Any]:
         """
-            Returns a dictionary representation of this credential object.
+            Returns a full dictionary representation of this credential object,
+            suitable for round-tripping back through the constructor.
+
+            .. warning::
+                The returned dictionary includes raw secret material (passwords,
+                tokens, keys, ...) for secret-bearing credential subclasses. Do
+                NOT log or persist it as-is. Use :meth:`as_redacted_dict` for any
+                display, logging, or diagnostic output.
         """
 
         rtnval = {
@@ -81,5 +126,49 @@ class BaseCredential:
             "categories": self._categories,
             "role": self._role
         }
-        
+
+        return rtnval
+
+    def as_redacted_dict(self) -> Dict[str, Any]:
+        """
+            Returns a display/logging-safe dictionary representation of this
+            credential with all secret-bearing fields masked.
+
+            This is derived from :meth:`as_dict` (so it automatically covers every
+            subclass's fields) with any sensitive field value replaced by a
+            redaction placeholder. Use this anywhere credential data may be logged
+            or persisted.
+
+            :returns: A dictionary with secret fields masked.
+        """
+        full = self.as_dict()
+
+        rtnval = {}
+        for key, value in full.items():
+            if is_sensitive_field(key):
+                rtnval[key] = REDACTED_PLACEHOLDER
+            else:
+                rtnval[key] = value
+
+        return rtnval
+
+    def __repr__(self) -> str:
+        """
+            Returns a secret-safe debug representation of this credential.
+
+            The representation is built from :meth:`as_redacted_dict`, so secret
+            fields are masked. Subclasses may override with their own redacted
+            representation; this default guarantees no credential class falls back
+            to a representation that could leak secret material.
+
+            :returns: A redacted string representation safe for logs.
+        """
+        redacted = self.as_redacted_dict()
+
+        field_parts = []
+        for key, value in redacted.items():
+            field_parts.append(f"{key}={value!r}")
+
+        field_str = ", ".join(field_parts)
+        rtnval = f"{type(self).__name__}({field_str})"
         return rtnval

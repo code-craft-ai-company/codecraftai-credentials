@@ -29,6 +29,7 @@ class LinodeApiTokenCredential(BaseCredential):
         .. code:: yaml
             "identifier": "linode-token"
             "category": "cloud-venue"
+            "provider": "linode"
             "token": "..."
 
     """

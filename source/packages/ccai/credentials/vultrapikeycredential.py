@@ -29,6 +29,7 @@ class VultrApiKeyCredential(BaseCredential):
         .. code:: yaml
             "identifier": "vultr-key"
             "category": "cloud-venue"
+            "provider": "vultr"
             "token": "..."
 
     """

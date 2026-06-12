@@ -30,6 +30,7 @@ class OracleCloudApiKeyCredential(BaseCredential):
         .. code:: yaml
             "identifier": "oci-key"
             "category": "cloud-venue"
+            "provider": "oracle-cloud"
             "tenancy_ocid": "ocid1.tenancy.oc1..aaaa"
             "user_ocid": "ocid1.user.oc1..bbbb"
             "private_key": "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n"

@@ -29,6 +29,7 @@ class EquinixMetalApiTokenCredential(BaseCredential):
         .. code:: yaml
             "identifier": "equinix-token"
             "category": "cloud-venue"
+            "provider": "equinix-metal"
             "token": "..."
 
     """

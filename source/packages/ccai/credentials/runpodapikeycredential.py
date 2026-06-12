@@ -29,6 +29,7 @@ class RunpodApiKeyCredential(BaseCredential):
         .. code:: yaml
             "identifier": "runpod-key"
             "category": "hpc-venue"
+            "provider": "runpod"
             "token": "..."
 
     """

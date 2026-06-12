@@ -29,6 +29,7 @@ class LambdalabsApiKeyCredential(BaseCredential):
         .. code:: yaml
             "identifier": "lambdalabs-key"
             "category": "hpc-venue"
+            "provider": "lambdalabs"
             "token": "secret_..."
 
     """

@@ -29,6 +29,7 @@ class CrusoeApiKeyCredential(BaseCredential):
         .. code:: yaml
             "identifier": "crusoe-key"
             "category": "hpc-venue"
+            "provider": "crusoe"
             "access_key_id": "..."
             "secret": "..."
 

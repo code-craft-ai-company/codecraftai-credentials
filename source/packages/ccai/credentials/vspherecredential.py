@@ -33,6 +33,7 @@ class VSphereCredential(BaseCredential):
         .. code:: yaml
             "identifier": "vsphere-cred"
             "category": "vm-venue"
+            "provider": "vsphere"
             "username": "administrator@vsphere.local"
             "password": "@@&_@@&_LetMeComeIn"
             "sso_token": null

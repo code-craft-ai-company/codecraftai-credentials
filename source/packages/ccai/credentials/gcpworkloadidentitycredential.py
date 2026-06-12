@@ -29,6 +29,7 @@ class GcpWorkloadIdentityCredential(BaseCredential):
         .. code:: yaml
             "identifier": "gcp-wif"
             "category": "cloud-venue"
+            "provider": "gcp-workload-identity"
             "audience": "//iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/pool/providers/provider"
             "subject_token_type": "urn:ietf:params:oauth:token-type:jwt"
             "service_account_email": "svc@my-project.iam.gserviceaccount.com"

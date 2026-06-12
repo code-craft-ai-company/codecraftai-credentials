@@ -35,7 +35,13 @@ from ccai.credentials.tailscaleoauthcredential import TailscaleOAuthCredential
 from ccai.credentials.twingateserviceaccountcredential import TwingateServiceAccountCredential
 from ccai.credentials.wifichoicecredential import WifiChoiceCredential
 
-logger = logging.getLogger()
+from ccai.credentials.venueregistry import (
+    VENUE_PROVIDER_REGISTRY,
+    VENUE_UMBRELLA_CATEGORIES,
+    known_providers,
+)
+
+logger = logging.getLogger(__name__)
 
 class CredentialManager:
     """
@@ -285,10 +291,28 @@ class CredentialManager:
                             elif category == "wifi-choice":
                                 credobj = WifiChoiceCredential(**credential)
                                 self._credentials[ident] = credobj
-                                
+
+                            elif category in VENUE_UMBRELLA_CATEGORIES:
+                                # Venue umbrella categories are shared across many
+                                # providers, so a 'provider' discriminator selects the
+                                # concrete class. Validation (above) has already
+                                # guaranteed a known provider is present, so a missing
+                                # key here is a hard error rather than a silent drop.
+                                provider = credential.get("provider", None)
+                                if provider is None or provider not in VENUE_PROVIDER_REGISTRY:
+                                    errmsg = f"Venue credential '{ident}' (category '{category}') requires a known 'provider'. KNOWN PROVIDERS: {known_providers()}"
+                                    raise ConfigurationError(errmsg)
+                                cred_class = VENUE_PROVIDER_REGISTRY[provider]
+                                # 'provider' is a manager-level dispatch field, not a
+                                # constructor argument for the concrete credential class.
+                                cred_data = dict(credential)
+                                del cred_data["provider"]
+                                credobj = cred_class(**cred_data)
+                                self._credentials[ident] = credobj
+
                             else:
-                                warnmsg = f"Unknown category '{category}' found in credential '{ident}'"
-                                logger.warning(warnmsg)
+                                errmsg = f"Unknown category '{category}' found in credential '{ident}'. The credential cannot be loaded."
+                                raise ConfigurationError(errmsg)
 
                 else:
                     errmsg_lines = [
@@ -403,9 +427,20 @@ class CredentialManager:
                         child_errors, child_warnings = TwingateServiceAccountCredential.validate(cinfo)
                     elif category == "wifi-choice":
                         child_errors, child_warnings = WifiChoiceCredential.validate(cinfo)
+                    elif category in VENUE_UMBRELLA_CATEGORIES:
+                        provider = cinfo.get("provider", None)
+                        if provider is None:
+                            child_errors = [f"Venue credential (category '{category}') must declare a 'provider'. KNOWN PROVIDERS: {known_providers()}. info={cinfo}"]
+                            child_warnings = []
+                        elif provider not in VENUE_PROVIDER_REGISTRY:
+                            child_errors = [f"Unknown venue provider '{provider}'. KNOWN PROVIDERS: {known_providers()}. info={cinfo}"]
+                            child_warnings = []
+                        else:
+                            cred_class = VENUE_PROVIDER_REGISTRY[provider]
+                            child_errors, child_warnings = cred_class.validate(cinfo)
                     else:
-                        child_errors = []
-                        child_warnings = [f"Unknown credential category={category}. info={cinfo}"]
+                        child_errors = [f"Unknown credential category={category}. info={cinfo}"]
+                        child_warnings = []
 
                     errors.extend(child_errors)
                     warnings.extend(child_warnings)

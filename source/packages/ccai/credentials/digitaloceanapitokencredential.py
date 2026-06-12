@@ -29,6 +29,7 @@ class DigitalOceanApiTokenCredential(BaseCredential):
         .. code:: yaml
             "identifier": "digitalocean-token"
             "category": "cloud-venue"
+            "provider": "digitalocean"
             "token": "dop_v1_..."
 
     """
