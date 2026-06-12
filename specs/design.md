@@ -1,4 +1,4 @@
-# AutoMojo Credentials Package - Design Document
+# Code Craft AI Credentials Package - Design Document
 
 ## Overview
 
@@ -175,7 +175,7 @@ SOURCE_URIS:
 
 - **Thread-Safe**: Uses RLock for concurrent access protection
 - **Lazy Loading**: Credentials loaded on first access
-- **Configuration Integration**: Integrates with AutoMojo configuration system
+- **Configuration Integration**: Integrates with Code Craft AI configuration system
 - **Context Awareness**: Supports multiple configuration sources
 
 ## Integration Points

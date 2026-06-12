@@ -1,9 +1,9 @@
-# AutoMojo Credentials Package - Requirements Document
+# Code Craft AI Credentials Package - Requirements Document
 
 ## 1. Project Overview
 
 ### 1.1 Purpose
-The AutoMojo Credentials Package shall provide a comprehensive, secure, and extensible credential management system for the Code Craft AI testing framework. The system must support multiple authentication methods commonly used in automated testing scenarios while maintaining security best practices and ease of configuration.
+The Code Craft AI Credentials Package shall provide a comprehensive, secure, and extensible credential management system for the Code Craft AI testing framework. The system must support multiple authentication methods commonly used in automated testing scenarios while maintaining security best practices and ease of configuration.
 
 ### 1.2 Scope
 This package shall handle credential storage, validation, retrieval, and management for automated testing environments. It shall support both single-category and multi-category credentials while providing a unified interface for credential access.
@@ -164,7 +164,7 @@ This package shall handle credential storage, validation, retrieval, and managem
 
 #### 4.1.3 Singleton Interface
 - **REQ-085**: CredentialManagerSingleton() function SHALL provide global access
-- **REQ-086**: Singleton SHALL integrate with AutoMojo configuration system
+- **REQ-086**: Singleton SHALL integrate with Code Craft AI configuration system
 - **REQ-087**: Singleton SHALL support multiple configuration sources
 
 ### 4.2 Configuration Interface
@@ -232,15 +232,15 @@ This package shall handle credential storage, validation, retrieval, and managem
 
 ### 7.1 Coding Standards
 
-#### 7.1.1 AutoMojo Standards Compliance
-- **REQ-117**: Code SHALL follow AutoMojo Python naming conventions
-- **REQ-118**: Code SHALL follow AutoMojo code organization standards
-- **REQ-119**: Code SHALL prioritize debuggability and readability per AutoMojo standards
+#### 7.1.1 Code Craft AI Standards Compliance
+- **REQ-117**: Code SHALL follow Code Craft AI Python naming conventions
+- **REQ-118**: Code SHALL follow Code Craft AI code organization standards
+- **REQ-119**: Code SHALL prioritize debuggability and readability per Code Craft AI standards
 
 #### 7.1.2 Python Standards
 - **REQ-120**: Code SHALL be compatible with Python 3.10+
 - **REQ-121**: All public interfaces SHALL use complete type annotations
-- **REQ-122**: Code SHALL follow PEP 8 style guidelines where not superseded by AutoMojo standards
+- **REQ-122**: Code SHALL follow PEP 8 style guidelines where not superseded by Code Craft AI standards
 
 ### 7.2 Documentation Standards
 
@@ -254,7 +254,7 @@ This package shall handle credential storage, validation, retrieval, and managem
 
 ### 8.1 Required Dependencies
 
-#### 8.1.1 AutoMojo Packages
+#### 8.1.1 Code Craft AI Packages
 - **REQ-127**: System SHALL depend on codecraftai-xmodules for core utilities
 - **REQ-128**: System SHALL depend on codecraftai-configuration for configuration management
 - **REQ-129**: System SHALL integrate with codecraftai-testbase for testing framework support
@@ -266,7 +266,7 @@ This package shall handle credential storage, validation, retrieval, and managem
 ### 8.2 Integration Points
 
 #### 8.2.1 Configuration Integration
-- **REQ-132**: System SHALL integrate with AutoMojo landscape configuration
+- **REQ-132**: System SHALL integrate with Code Craft AI landscape configuration
 - **REQ-133**: System SHALL support configuration loading from multiple sources
 - **REQ-134**: System SHALL provide configuration validation feedback to users
 
