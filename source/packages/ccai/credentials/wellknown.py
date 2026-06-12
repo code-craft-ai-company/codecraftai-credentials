@@ -101,10 +101,14 @@ def CredentialManagerSingleton(credential_info: Optional[dict] = None, credentia
 
         SINGLETON_LOCK.acquire()
         try:
-
-            credmgr = CredentialManager()
-            credmgr.load_credentials(credential_info, source_uris=credential_uris)
-            CREDENTIAL_MANAGER_SINGLETON = credmgr
+            # Re-check inside the lock: another thread may have initialised the
+            # singleton between the outer check and acquiring the lock. Without
+            # this, two concurrent first-callers both build and load a manager,
+            # the second overwriting the first.
+            if CREDENTIAL_MANAGER_SINGLETON is None:
+                credmgr = CredentialManager()
+                credmgr.load_credentials(credential_info, source_uris=credential_uris)
+                CREDENTIAL_MANAGER_SINGLETON = credmgr
 
         finally:
             SINGLETON_LOCK.release()

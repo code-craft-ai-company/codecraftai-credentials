@@ -38,11 +38,13 @@ A `CredentialManager` loads credentials from configuration and exposes them
 by name so that protocol and REST clients elsewhere in the suite (for example
 `codecraftai-protocol-ssh`, `codecraftai-restclient-github-public`, and
 `codecraftai-gitlab`) can request the credential they need without hard-coding
-authentication details. The package implements the `IBasicCredential`
-interface from `codecraftai-interfaces`.
+authentication details. Its `BasicCredential`/`SshCredential` classes
+structurally satisfy the `IBasicCredential` `typing.Protocol` from
+`codecraftai-interfaces` (the protocol is structural, so no explicit inheritance
+or runtime dependency on `codecraftai-interfaces` is required).
 
 # Testing Conventions
-The 'codecraftai-configuration' package repository utilizes the 'unittest' framework in order to test the functionality of the code.
+The 'codecraftai-credentials' package repository utilizes the 'unittest' framework in order to test the functionality of the code.
 
 ## Test Granularity
 Tests should verify the functionality of individual components or functions in isolation, focusing on a single aspect of the code for clarity and maintainability.
@@ -138,7 +140,7 @@ When work is being done on this repository using the Codex web environment.  Use
 When checking out the code for this repository in order to test changes, agents must:
 
 * run the 'repository-setup/rehome-repository' script.  It creates a needed '.env' file.
-* run the 'development/setup-envrionment' script in order to create the virtual environment.
+* run the 'development/setup-environment' script in order to create the virtual environment.
 
 # Project Specific Rules
 
