@@ -12,7 +12,7 @@ __copyright__ = "Copyright 2025, Code Craft AI LLC"
 __credits__ = []
 
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from ccai.errors.exceptions import ConfigurationError
 
@@ -63,6 +63,15 @@ class BaseCredential:
             "identifier": "player-ssh"
             "category": "(category)"
     """
+
+    # Names of this class's ``as_dict`` fields that carry secret material but are
+    # NOT matched by the SENSITIVE_FIELD_SUBSTRINGS name heuristic (e.g. "keyraw",
+    # "keys", "networks"). Subclasses declare their own; the values are aggregated
+    # across the MRO in as_redacted_dict, so a subclass's declaration never drops a
+    # base class's. Redaction is name-based only, so a declared field is masked
+    # wholesale (safe for nested list/dict values whose leaves hold secrets).
+    SECRET_FIELDS: Tuple[str, ...] = ()
+
     def __init__(self, *, identifier: str, categories: List[str], role: Optional[str]="priv"):
         """
             Initializes a :class:`BaseCredential` instance.
@@ -143,9 +152,13 @@ class BaseCredential:
         """
         full = self.as_dict()
 
+        declared_secret_fields = set()
+        for klass in type(self).__mro__:
+            declared_secret_fields.update(getattr(klass, "SECRET_FIELDS", ()))
+
         rtnval = {}
         for key, value in full.items():
-            if is_sensitive_field(key):
+            if is_sensitive_field(key) or key in declared_secret_fields:
                 rtnval[key] = REDACTED_PLACEHOLDER
             else:
                 rtnval[key] = value

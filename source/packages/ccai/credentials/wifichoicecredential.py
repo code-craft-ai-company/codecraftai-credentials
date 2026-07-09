@@ -33,6 +33,11 @@ class WifiChoiceCredential(BaseCredential):
 
     """
 
+    # 'networks' is a list of {ssid, password} dicts whose leaves hold secrets;
+    # the field name is not matched by the sensitive field-name heuristic, so the
+    # whole value is masked wholesale.
+    SECRET_FIELDS = ("networks",)
+
     def __init__(self, *, identifier: str, categories: List[str], networks: List[Dict[str, str]], role: Optional[str] = "priv"):
         """
             Initializes a :class:`WifiChoiceCredential` instance.

@@ -35,6 +35,10 @@ class SshCredential(BaseCredential):
             "allow_agent": False
     """
 
+    # 'keyraw' holds raw private-key material and is not matched by the sensitive
+    # field-name heuristic; 'password'/'keypasswd' are already caught by it.
+    SECRET_FIELDS = ("keyraw",)
+
     def __init__(self, *, identifier: str, categories: List[str], username: str, role: Optional[str] = "priv",
                  password: Optional[str] = None, keyfile: Optional[str] = None, keyraw: Optional[str] = None,
                  keypasswd: Optional[str] = None, allow_agent: bool = False, primitive: bool = False):

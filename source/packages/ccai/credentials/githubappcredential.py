@@ -33,6 +33,10 @@ class GithubAppCredential(BaseCredential):
             "keypasswd": ["password1"]
     """
 
+    # 'keys' holds the raw PEM private-key strings and is not matched by the
+    # sensitive field-name heuristic; 'keypasswd' is already caught by it.
+    SECRET_FIELDS = ("keys",)
+
     def __init__(self, *, identifier: str, categories: List[str],
                  keyfiles: Optional[List[str]] = None,
                  keys: Optional[List[str]] = None,
