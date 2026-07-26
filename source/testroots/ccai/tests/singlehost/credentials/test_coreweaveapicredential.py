@@ -7,7 +7,8 @@
     serialize/deserialize roundtrip property test.
 """
 
-from hypothesis import given, strategies as st
+from ccai.testbase.properties import given
+from ccai.testbase.properties import strategies as st
 
 from ccai.credentials.coreweaveapicredential import CoreweaveApiCredential
 from ccai.credentials.wellknown import CATEGORY_HPC_VENUE, WELL_KNOWN_CATEGORY_MEMBERSHIP

@@ -8,7 +8,8 @@
     roundtrip property test for the Tailscale auth-key credential type.
 """
 
-from hypothesis import given, strategies as st
+from ccai.testbase.properties import given
+from ccai.testbase.properties import strategies as st
 
 from ccai.credentials.tailscaleauthkeycredential import TailscaleAuthKeyCredential
 from ccai.errors.exceptions import ConfigurationError
