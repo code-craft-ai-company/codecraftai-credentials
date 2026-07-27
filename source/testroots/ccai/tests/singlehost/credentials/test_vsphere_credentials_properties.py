@@ -8,8 +8,7 @@
     logic and assertions.
 """
 
-from ccai.testbase.properties import given
-from ccai.testbase.properties import strategies as st
+from hypothesis import given, strategies as st
 
 from ccai.credentials.vspherecredential import VSphereCredential
 

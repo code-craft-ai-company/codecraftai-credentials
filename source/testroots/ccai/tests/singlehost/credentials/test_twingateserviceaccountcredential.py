@@ -7,8 +7,7 @@
     assertion behaviour.
 """
 
-from ccai.testbase.properties import given
-from ccai.testbase.properties import strategies as st
+from hypothesis import given, strategies as st
 
 from ccai.credentials.twingateserviceaccountcredential import TwingateServiceAccountCredential
 from ccai.errors.exceptions import ConfigurationError

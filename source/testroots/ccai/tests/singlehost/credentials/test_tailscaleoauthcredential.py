@@ -8,8 +8,7 @@
     hypothesis property test verifies serialize/deserialize round-trip identity.
 """
 
-from ccai.testbase.properties import given
-from ccai.testbase.properties import strategies as st
+from hypothesis import given, strategies as st
 
 from ccai.credentials.tailscaleoauthcredential import TailscaleOAuthCredential
 from ccai.errors.exceptions import ConfigurationError

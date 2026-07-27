@@ -7,8 +7,7 @@
     module-level ``test_*`` function with identical assertion behaviour.
 """
 
-from ccai.testbase.properties import given
-from ccai.testbase.properties import strategies as st
+from hypothesis import given, strategies as st
 
 from ccai.credentials.lambdalabsapikeycredential import LambdalabsApiKeyCredential
 from ccai.credentials.wellknown import CATEGORY_HPC_VENUE, WELL_KNOWN_CATEGORY_MEMBERSHIP

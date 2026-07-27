@@ -4,8 +4,7 @@
     and a property-based serialize/deserialize roundtrip.
 """
 
-from ccai.testbase.properties import given
-from ccai.testbase.properties import strategies as st
+from hypothesis import given, strategies as st
 
 from ccai.credentials.proxmoxapitokencredential import ProxmoxApiTokenCredential
 from ccai.credentials.wellknown import CATEGORY_VM_VENUE, WELL_KNOWN_CATEGORY_MEMBERSHIP
