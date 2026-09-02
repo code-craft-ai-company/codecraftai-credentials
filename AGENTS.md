@@ -40,8 +40,8 @@ by name so that protocol and REST clients elsewhere in the suite (for example
 `codecraftai-gitlab`) can request the credential they need without hard-coding
 authentication details. Its `BasicCredential`/`SshCredential` classes
 structurally satisfy the `IBasicCredential` `typing.Protocol` from
-`codecraftai-interfaces` (the protocol is structural, so no explicit inheritance
-or runtime dependency on `codecraftai-interfaces` is required).
+`codecraftai-foundations` (the protocol is structural, so no explicit inheritance
+or import of `ccai.interfaces` is required).
 
 # Testing Conventions
 The 'codecraftai-credentials' package repository utilizes the 'unittest' framework in order to test the functionality of the code.

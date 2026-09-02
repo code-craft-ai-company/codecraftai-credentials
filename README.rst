@@ -12,7 +12,7 @@ Highlights
 - Token-oriented types: ``ApiTokenCredential``, ``SecretTokenCredential``, ``PersonalApiTokenCredential``.
 - Vendor-specific credentials: ``GithubTokenCredential``, ``GithubAppCredential``, ``AwsAccessKeyCredential``, and ``AzureClientSecretCredential``.
 - ``WifiChoiceCredential`` for network-selection scenarios.
-- Structurally satisfies the ``IBasicCredential`` ``typing.Protocol`` from ``codecraftai-interfaces`` (the protocol is structural, so no explicit inheritance or runtime dependency is required).
+- Structurally satisfies the ``IBasicCredential`` ``typing.Protocol`` from ``codecraftai-foundations`` (the protocol is structural, so no explicit inheritance or runtime dependency is required).
 
 Repository Structure
 ====================
