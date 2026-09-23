@@ -14,8 +14,6 @@ __credits__ = []
 
 from typing import Any, Dict, List, Optional, Tuple
 
-import os
-
 from ccai.errors.exceptions import ConfigurationError
 
 from ccai.credentials.basecredential import BaseCredential
