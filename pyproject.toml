@@ -17,6 +17,10 @@ dependencies = [
     "codecraftai-foundations<2.0.0",
 ]
 
+[project.urls]
+Repository = "https://github.com/code-craft-ai-company/codecraftai-credentials"
+Issues = "https://github.com/code-craft-ai-company/codecraftai-credentials/issues"
+
 [dependency-groups]
 dev = [
     "hypothesis>=6.0.0",
